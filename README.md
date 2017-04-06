@@ -1,2 +1,2 @@
-# USH
-Aplikacija za evidenciju clanova Udruzenja studenata sa hendikepom
+#USH
+Repozitorijum za aplikacije u USH-u
