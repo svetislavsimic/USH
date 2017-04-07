@@ -1,10 +1,3 @@
-#ovo je moj prijedlog izgleda aplikacije... :) ove varijable sam setovao
-#onako samo da vidite koji sam koncept zamislio
-#znaci kad kliknes na dugme ono ode u DISABLED state i otkrije sta je iza njega.. :)
-#takodje sam uradio ove funkcije da se brise entry na klik
-# ako neki ima nekih nejasnoca, pitanja, prijedloga javite se na FB. :)
-#da naravno.. probajte   kliknuti na sva polja :)
-
 from tkinter import *
 from tkinter import ttk
 import tkinter as tk
@@ -20,7 +13,7 @@ root.geometry('800x600')
 root.title('Igra Asocijacije')
 rjesenje = StringVar()
 rjesenje.set('*rjesenje*')
-#VARIJABLE A
+#VARIJABLE A             #kada se program pokrene varijable se setuju na imena polja
 kolonaA = StringVar()
 kolonaA.set('***A***')
 A1 = StringVar()
@@ -69,9 +62,9 @@ D4.set('D4')
 
 def state(dugme):
        if dugme == dugmeA1:
-              dugme.config(state = DISABLED)
-              A1.set('vazduh')
-       elif dugme == dugmeA2:
+              dugme.config(state = DISABLED)  #funkcija koja setuje varijable na vrijednost (ovo je samo testna verzija)
+              A1.set('vazduh')                   #inace ce da ih setuje na vrijednosti koje povuce iz fajla koji proslijedimo
+       elif dugme == dugmeA2:                    #u programu
               dugme.config(state = DISABLED)
               A2.set('voda')
        elif dugme == dugmeA3:
@@ -118,11 +111,11 @@ def state(dugme):
               D4.set('zemlja')
 
 def brisiEntry(event):
-       event.widget.delete(0, 'end')
+       event.widget.delete(0, 'end') #funkcija brise bilo koji entry koji joj proslijedimo
        return None
 def setEntry(event):
-       if root.focus_get()!= event.widget:
-              kolonaA.set('***A***')
+       if root.focus_get()!= event.widget: #funkcija koja setuje entryije na pocetne vrijednosti kada kliknete
+              kolonaA.set('***A***')             #bilo gdje van entryja
               kolonaB.set('***B***')
               kolonaC.set('***C***')
               kolonaD.set('***D***')
@@ -132,8 +125,8 @@ def setEntry(event):
 #kolone A
 
 dugmeA1 = tk.Button(root, textvariable = A1, command = lambda: state(dugmeA1),
-                  bg='#02A2F2', fg='white', width = 16, font = BUTT_FONT, state = NORMAL)
-dugmeA1.grid(column=0, row=0, sticky='w')
+                  bg='#02A2F2', fg='white', width = 16, font = BUTT_FONT, state = NORMAL) #ovo je postavljanje buttona i entryija
+dugmeA1.grid(column=0, row=0, sticky='w')                                                  #klasicni fizicki posao :) 
 
 dugmeA2 = tk.Button(root, textvariable = A2, command = lambda: state(dugmeA2),
                   bg='#02A2F2', fg='white', width = 16, font = BUTT_FONT, state = NORMAL)
