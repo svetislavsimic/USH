@@ -220,5 +220,12 @@ kolonaDent.grid(column=1,row=5)
 kolonaDent.place(x=440, y=367)
 kolonaDent.bind("<Button-1>", brisiEntry)
 
+#slika
+slika=PhotoImage(file='sko.png')
+slika=slika.subsample(5,5)
+slikalabel=tk.Label(root,image=slika)
+slikalabel.grid(column=0, row=8,columnspan=1, sticky=(N, S, E, W))
+slikalabel.place(x=330, y=450)
+
 root.bind("<Button-1>", setEntry)
 root.mainloop()
