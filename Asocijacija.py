@@ -1,6 +1,20 @@
 from tkinter import *
 from tkinter import ttk
 import tkinter as tk
+from xml.dom import minidom    # minidom je deo biblioteke XML za parsiranje
+e = minidom.parse("Asoc.xml")  # Povezvanje parsera sa Asoc.xml
+podaciA=e.getElementsByTagName("poljeA")   #Dohvatanje elemenata iz XML-a
+podaciB=e.getElementsByTagName("poljeB")
+podaciC=e.getElementsByTagName("poljeC")
+podaciD=e.getElementsByTagName("poljeD")
+
+
+#rjesenja kolona
+rKolonaA = podaciA[4].attributes["vrednostA"].value
+rKolonaB = podaciB[4].attributes["vrednostB"].value
+rKolonaC = podaciC[4].attributes["vrednostC"].value
+rKolonaD = podaciD[4].attributes["vrednostD"].value
+konacno=e.getElementsByTagName("Konacno")[0].attributes["vrednostK"].value
 
 BUTT_FONT = ('Consolas', 14, 'bold')
 ENT_FONT = ('Consolas', 17, 'bold')
@@ -60,55 +74,57 @@ D4 = StringVar()
 D4.set('D4')
 
 
-def state(dugme):
+
+
+def state(dugme):   #Funkcija se pokreće kada se klikne na dugme onda se dugme setuje na određenu vrednost iz fajla Asoc.xml
        if dugme == dugmeA1:
-              dugme.config(state = DISABLED)  #funkcija koja setuje varijable na vrijednost (ovo je samo testna verzija)
-              A1.set('vazduh')                   #inace ce da ih setuje na vrijednosti koje povuce iz fajla koji proslijedimo
-       elif dugme == dugmeA2:                    #u programu
               dugme.config(state = DISABLED)
-              A2.set('voda')
+              A1.set(podaciA[0].attributes["vrednostA"].value)
+       elif dugme == dugmeA2:
+              dugme.config(state = DISABLED)
+              A2.set(podaciA[1].attributes["vrednostA"].value)
        elif dugme == dugmeA3:
               dugme.config(state = DISABLED)
-              A3.set('vatra')
+              A3.set(podaciA[2].attributes["vrednostA"].value)
        elif dugme == dugmeA4:
               dugme.config(state = DISABLED)
-              A4.set('zemlja')
+              A4.set(podaciA[3].attributes["vrednostA"].value)
        elif dugme == dugmeB1:
               dugme.config(state = DISABLED)
-              B1.set('vazduh')
+              B1.set(podaciB[0].attributes["vrednostB"].value)
        elif dugme == dugmeB2:
               dugme.config(state = DISABLED)
-              B2.set('voda')
+              B2.set(podaciB[1].attributes["vrednostB"].value)
        elif dugme == dugmeB3:
               dugme.config(state = DISABLED)
-              B3.set('vatra')
+              B3.set(podaciB[2].attributes["vrednostB"].value)
        elif dugme == dugmeB4:
               dugme.config(state = DISABLED)
-              B4.set('zemlja')
+              B4.set(podaciB[3].attributes["vrednostB"].value)
        elif dugme == dugmeC1:
               dugme.config(state = DISABLED)
-              C1.set('vazduh')
+              C1.set(podaciC[0].attributes["vrednostC"].value)
        elif dugme == dugmeC2:
               dugme.config(state = DISABLED)
-              C2.set('voda')
+              C2.set(podaciC[1].attributes["vrednostC"].value)
        elif dugme == dugmeC3:
               dugme.config(state = DISABLED)
-              C3.set('vatra')
+              C3.set(podaciC[2].attributes["vrednostC"].value)
        elif dugme == dugmeC4:
               dugme.config(state = DISABLED)
-              C4.set('zemlja')
+              C4.set(podaciC[3].attributes["vrednostC"].value)
        elif dugme == dugmeD1:
               dugme.config(state = DISABLED)
-              D1.set('vazduh')
+              D1.set(podaciD[0].attributes["vrednostD"].value)
        elif dugme == dugmeD2:
               dugme.config(state = DISABLED)
-              D2.set('voda')
+              D2.set(podaciD[1].attributes["vrednostD"].value)
        elif dugme == dugmeD3:
               dugme.config(state = DISABLED)
-              D3.set('vatra')
+              D3.set(podaciD[2].attributes["vrednostD"].value)
        elif dugme == dugmeD4:
               dugme.config(state = DISABLED)
-              D4.set('zemlja')
+              D4.set(podaciD[3].attributes["vrednostD"].value)
 
 def brisiEntry(event):
        event.widget.delete(0, 'end') #funkcija brise bilo koji entry koji joj proslijedimo
@@ -121,7 +137,93 @@ def setEntry(event):
               kolonaD.set('***D***')
               rjesenje.set('*rjesenje*')
               root.focus_set()
+def tacanOdgovor():
+       
+       if kolonaA.get() == rKolonaA:
+              dugmeA1.config(state = DISABLED)
+              A1.set(podaciA[0].attributes["vrednostA"].value)
+              dugmeA2.config(state = DISABLED)
+              A2.set(podaciA[1].attributes["vrednostA"].value)
+              dugmeA3.config(state = DISABLED)
+              A3.set(podaciA[2].attributes["vrednostA"].value)
+              dugmeA4.config(state = DISABLED)
+              A4.set(podaciA[3].attributes["vrednostA"].value)
+              kolonaAent.config(state=DISABLED)
+       if kolonaB.get() == rKolonaB:
+              dugmeB1.config(state = DISABLED)
+              B1.set(podaciB[0].attributes["vrednostB"].value)
+              dugmeB2.config(state = DISABLED)
+              B2.set(podaciB[1].attributes["vrednostB"].value)
+              dugmeB3.config(state = DISABLED)
+              B3.set(podaciB[2].attributes["vrednostB"].value)
+              dugmeB4.config(state = DISABLED)
+              B4.set(podaciB[3].attributes["vrednostB"].value)
+              kolonaBent.config(state=DISABLED)
+       if kolonaC.get() == rKolonaC:
+              dugmeC1.config(state = DISABLED)
+              C1.set(podaciC[0].attributes["vrednostC"].value)
+              dugmeC2.config(state = DISABLED)
+              C2.set(podaciC[1].attributes["vrednostC"].value)
+              dugmeC3.config(state = DISABLED)
+              C3.set(podaciC[2].attributes["vrednostC"].value)
+              dugmeC4.config(state = DISABLED)
+              C4.set(podaciC[3].attributes["vrednostC"].value)
+              kolonaCent.config(state=DISABLED)
+       if kolonaD.get() == rKolonaD:
+              dugmeD1.config(state = DISABLED)
+              D1.set(podaciD[0].attributes["vrednostD"].value)
+              dugmeD2.config(state = DISABLED)
+              D2.set(podaciD[1].attributes["vrednostD"].value)
+              dugmeD3.config(state = DISABLED)
+              D3.set(podaciD[2].attributes["vrednostD"].value)
+              dugmeD4.config(state = DISABLED)
+              D4.set(podaciD[3].attributes["vrednostD"].value)
+              kolonaDent.config(state=DISABLED)
+       if rjesenjeEnt.get() == konacno:
+              dugmeA1.config(state = DISABLED)
+              A1.set(podaciA[0].attributes["vrednostA"].value)
+              dugmeA2.config(state = DISABLED)
+              A2.set(podaciA[1].attributes["vrednostA"].value)
+              dugmeA3.config(state = DISABLED)
+              A3.set(podaciA[2].attributes["vrednostA"].value)
+              dugmeA4.config(state = DISABLED)
+              A4.set(podaciA[3].attributes["vrednostA"].value)
+              kolonaA.set(rKolonaA)
+              kolonaAent.config(state=DISABLED)
+              
+              dugmeB1.config(state = DISABLED)
+              B1.set(podaciB[0].attributes["vrednostB"].value)
+              dugmeB2.config(state = DISABLED)
+              B2.set(podaciB[1].attributes["vrednostB"].value)
+              dugmeB3.config(state = DISABLED)
+              B3.set(podaciB[2].attributes["vrednostB"].value)
+              dugmeB4.config(state = DISABLED)
+              B4.set(podaciB[3].attributes["vrednostB"].value)
+              kolonaB.set(rKolonaB)
+              kolonaBent.config(state=DISABLED)
 
+              dugmeC1.config(state = DISABLED)
+              C1.set(podaciC[0].attributes["vrednostC"].value)
+              dugmeC2.config(state = DISABLED)
+              C2.set(podaciC[1].attributes["vrednostC"].value)
+              dugmeC3.config(state = DISABLED)
+              C3.set(podaciC[2].attributes["vrednostC"].value)
+              dugmeC4.config(state = DISABLED)
+              C4.set(podaciC[3].attributes["vrednostC"].value)
+              kolonaC.set(rKolonaC)
+              kolonaCent.config(state=DISABLED)
+
+              dugmeD1.config(state = DISABLED)
+              D1.set(podaciD[0].attributes["vrednostD"].value)
+              dugmeD2.config(state = DISABLED)
+              D2.set(podaciD[1].attributes["vrednostD"].value)
+              dugmeD3.config(state = DISABLED)
+              D3.set(podaciD[2].attributes["vrednostD"].value)
+              dugmeD4.config(state = DISABLED)
+              D4.set(podaciD[3].attributes["vrednostD"].value)
+              kolonaD.set(rKolonaD)
+              kolonaDent.config(state=DISABLED)
+            
 #kolone A
 
 dugmeA1 = tk.Button(root, textvariable = A1, command = lambda: state(dugmeA1),
@@ -219,6 +321,16 @@ kolonaDent = tk.Entry(root, textvariable = kolonaD, fg='#02A2F2', justify='cente
 kolonaDent.grid(column=1,row=5)
 kolonaDent.place(x=440, y=367)
 kolonaDent.bind("<Button-1>", brisiEntry)
+#dugme
+potvrdi = tk.Button(root, text="Potvrdi", font = BUTT_FONT, bg='#02A2F2', fg='yellow',  command = tacanOdgovor)
+potvrdi.grid(column=1, row=5)
+potvrdi.place(x=700, y=283)
+#slika
+slika=PhotoImage(file='sko.png')
+slika=slika.subsample(5,5)
+slikalabel=tk.Label(root,image=slika)
+slikalabel.grid(column=0, row=8,columnspan=1, sticky=(N, S, E, W))
+slikalabel.place(x=330, y=450)
 
-root.bind("<Button-1>", setEntry)
+#root.bind("<Button-1>", setEntry)
 root.mainloop()
