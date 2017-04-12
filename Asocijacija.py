@@ -15,15 +15,47 @@ rKolonaB = podaciB[4].attributes["vrednostB"].value
 rKolonaC = podaciC[4].attributes["vrednostC"].value
 rKolonaD = podaciD[4].attributes["vrednostD"].value
 konacno=e.getElementsByTagName("Konacno")[0].attributes["vrednostK"].value
-
+TOP_FONT = ('Consolas', 13)
 BUTT_FONT = ('Consolas', 14, 'bold')
 ENT_FONT = ('Consolas', 17, 'bold')
 RJ_FONT = ('Consolas', 25, 'bold')
+highlight = 'yellow'
+c = None
+def boja(count):
+       pass
+def vrijeme(count):
+       global c
+       brojac['text'] = count
+       if count >= 0:
+              if count == 0:
+                     if plavi['bg']=='yellow':
+                            plavi['bg']='blue'
+                            crveni['bg']='yellow'
+                     else:
+                            crveni['bg']='red'
+                            plavi['bg']='yellow'
+                     count = 16
+              c=root.after(1000, vrijeme, count-1)
+def start():
+       vrijeme(16)
+       plavi['bg']= 'yellow'
+       popUp.destroy()
+       root.attributes("-topmost", True)
 root = Tk()
+#toplevel
+popUp = Toplevel()
+popUp.geometry('300x200+375+180')
+popUp.attributes("-topmost", True)
+popUp.title('Igra Asocijacije')
+popUp.configure(background='#002240')
+obavjestenje = tk.Label(popUp, text='--Igra acocijacija--',
+                        font=TOP_FONT, bg='#002240', fg='yellow')
+obavjestenje.place(x=60)
+pocni = tk.Button(popUp, text='Pocni igru', width=15, font=ENT_FONT, bg="#02A2F2", fg="yellow", command=start)
+pocni.place(x=50, y=80)
+
 root.configure(background='#002240')
-
-
-root.geometry('800x600')
+root.geometry('800x600+200+50')
 root.title('Igra Asocijacije')
 rjesenje = StringVar()
 rjesenje.set('*rjesenje*')
@@ -138,27 +170,84 @@ def setEntry(event):
               rjesenje.set('*rjesenje*')
               root.focus_set()
 def tacanOdgovor():
-       
+       brojac['text'] =''
+       global c
+       root.after_cancel(c)
+       vrijeme(16)
        if kolonaA.get() == rKolonaA:
-              dugmeA1.config(state = DISABLED)
-              A1.set(podaciA[0].attributes["vrednostA"].value)
-              dugmeA2.config(state = DISABLED)
-              A2.set(podaciA[1].attributes["vrednostA"].value)
-              dugmeA3.config(state = DISABLED)
-              A3.set(podaciA[2].attributes["vrednostA"].value)
-              dugmeA4.config(state = DISABLED)
-              A4.set(podaciA[3].attributes["vrednostA"].value)
-              kolonaAent.config(state=DISABLED)
+              if plavi['bg'] == 'yellow':
+                     dugmeA1.config(state = DISABLED)
+                     A1.set(podaciA[0].attributes["vrednostA"].value)
+                     dugmeA1["bg"] = "blue"
+                     dugmeA2.config(state = DISABLED)
+                     A2.set(podaciA[1].attributes["vrednostA"].value)
+                     dugmeA2["bg"] = "blue"
+                     dugmeA3.config(state = DISABLED)
+                     A3.set(podaciA[2].attributes["vrednostA"].value)
+                     dugmeA3["bg"] = "blue"
+                     dugmeA4.config(state = DISABLED)
+                     A4.set(podaciA[3].attributes["vrednostA"].value)
+                     dugmeA4["bg"] = "blue"
+                     kolonaAent.config(state=DISABLED)
+                     kolonaA.set("*{}*".format(rKolonaA))
+              else:
+                     dugmeA1.config(state = DISABLED)
+                     A1.set(podaciA[0].attributes["vrednostA"].value)
+                     dugmeA1["bg"] = "red"
+                     dugmeA2.config(state = DISABLED)
+                     A2.set(podaciA[1].attributes["vrednostA"].value)
+                     dugmeA2["bg"] = "red"
+                     dugmeA3.config(state = DISABLED)
+                     A3.set(podaciA[2].attributes["vrednostA"].value)
+                     dugmeA3["bg"] = "red"
+                     dugmeA4.config(state = DISABLED)
+                     A4.set(podaciA[3].attributes["vrednostA"].value)
+                     dugmeA4["bg"] = "red"
+                     kolonaAent.config(state=DISABLED)
+                     kolonaA.set("*{}*".format(rKolonaA))
+       elif kolonaA.get() != rKolonaA:
+              if plavi['bg'] == 'yellow':
+                     crveni['bg'] = 'yellow'
+                     plavi['bg'] = 'blue'
+                     root.after_cancel(c)
+                     vrijeme(16)
+              else:
+                     plavi['bg'] = 'yellow'
+                     crveni['bg'] = 'red'
+                     root.after_cancel(c)
+                     vrijeme(16)
        if kolonaB.get() == rKolonaB:
-              dugmeB1.config(state = DISABLED)
-              B1.set(podaciB[0].attributes["vrednostB"].value)
-              dugmeB2.config(state = DISABLED)
-              B2.set(podaciB[1].attributes["vrednostB"].value)
-              dugmeB3.config(state = DISABLED)
-              B3.set(podaciB[2].attributes["vrednostB"].value)
-              dugmeB4.config(state = DISABLED)
-              B4.set(podaciB[3].attributes["vrednostB"].value)
-              kolonaBent.config(state=DISABLED)
+              if plavi['bg'] == 'yellow':
+                     dugmeB1.config(state = DISABLED)
+                     B1.set(podaciB[0].attributes["vrednostB"].value)
+                     dugmeB1["bg"] = "blue"
+                     dugmeB2.config(state = DISABLED)
+                     B2.set(podaciB[1].attributes["vrednostB"].value)
+                     dugmeB2["bg"] = "blue"
+                     dugmeB3.config(state = DISABLED)
+                     B3.set(podaciB[2].attributes["vrednostB"].value)
+                     dugmeB3["bg"] = "blue"
+                     dugmeB4.config(state = DISABLED)
+                     B4.set(podaciB[3].attributes["vrednostB"].value)
+                     dugmeB4["bg"] = "blue"
+                     kolonaBent.config(state=DISABLED)
+                     kolonaB.set("*{}*".format(rKolonaB))
+              else:
+                     dugmeB1.config(state = DISABLED)
+                     B1.set(podaciB[0].attributes["vrednostB"].value)
+                     dugmeB1["bg"] = "red"
+                     dugmeB2.config(state = DISABLED)
+                     B2.set(podaciB[1].attributes["vrednostB"].value)
+                     dugmeB2["bg"] = "red"
+                     dugmeB3.config(state = DISABLED)
+                     B3.set(podaciB[2].attributes["vrednostB"].value)
+                     dugmeB3["bg"] = "red"
+                     dugmeB4.config(state = DISABLED)
+                     B4.set(podaciB[3].attributes["vrednostB"].value)
+                     dugmeB4["bg"] = "red"
+                     kolonaBent.config(state=DISABLED)
+                     kolonaB.set("*{}*".format(rKolonaB))
+                     
        if kolonaC.get() == rKolonaC:
               dugmeC1.config(state = DISABLED)
               C1.set(podaciC[0].attributes["vrednostC"].value)
@@ -321,16 +410,29 @@ kolonaDent = tk.Entry(root, textvariable = kolonaD, fg='#02A2F2', justify='cente
 kolonaDent.grid(column=1,row=5)
 kolonaDent.place(x=440, y=367)
 kolonaDent.bind("<Button-1>", brisiEntry)
+#sijalica slika
+sijalica = PhotoImage(file='sijalica.png')
+sijalica = sijalica.subsample(10)
 #dugme
 potvrdi = tk.Button(root, text="Potvrdi", font = BUTT_FONT, bg='#02A2F2', fg='yellow',  command = tacanOdgovor)
 potvrdi.grid(column=1, row=5)
 potvrdi.place(x=700, y=283)
+plavi = tk.Button(root, image = sijalica, bg='blue')
+plavi.grid(column=2, row=0)
+plavi.place(x=250)
+crveni = tk.Button(root, image = sijalica, bg='red')
+crveni.grid(column=1, row=0)
+crveni.place(x=470)
+# brojac
+brojac = tk.Label(root, width=5, font=RJ_FONT, relief=SUNKEN)
+brojac.place(x=350)
 #slika
 slika=PhotoImage(file='sko.png')
 slika=slika.subsample(5,5)
 slikalabel=tk.Label(root,image=slika)
 slikalabel.grid(column=0, row=8,columnspan=1, sticky=(N, S, E, W))
 slikalabel.place(x=330, y=450)
+
 
 #root.bind("<Button-1>", setEntry)
 root.mainloop()
