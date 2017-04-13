@@ -19,11 +19,9 @@ TOP_FONT = ('Consolas', 13)
 BUTT_FONT = ('Consolas', 14, 'bold')
 ENT_FONT = ('Consolas', 17, 'bold')
 RJ_FONT = ('Consolas', 25, 'bold')
-highlight = 'yellow'
+klik = 0   # klik sluzi za sprjecavanje otvaranja vise polja odjednom i unosenja odgovora prije nego se otvori polje
 c = None
-def boja(count):
-       pass
-def vrijeme(count):
+def vrijeme(count): # tajmer koji prebacuje zutu boju sa igraca na igraca
        global c
        brojac['text'] = count
        if count >= 0:
@@ -36,13 +34,13 @@ def vrijeme(count):
                             plavi['bg']='yellow'
                      count = 16
               c=root.after(1000, vrijeme, count-1)
-def start():
+def start(): # start se poziva iz prozorcica koji sluzi da startuje tajmer i pokrene igru
        vrijeme(16)
        plavi['bg']= 'yellow'
        popUp.destroy()
        root.attributes("-topmost", True)
 root = Tk()
-#toplevel
+#toplevel se pokrece pri pokretanu programa.
 popUp = Toplevel()
 popUp.geometry('300x200+375+180')
 popUp.attributes("-topmost", True)
@@ -57,11 +55,13 @@ pocni.place(x=50, y=80)
 root.configure(background='#002240')
 root.geometry('800x600+200+50')
 root.title('Igra Asocijacije')
+
+info = StringVar()
 rjesenje = StringVar()
 rjesenje.set('*rjesenje*')
 #VARIJABLE A             #kada se program pokrene varijable se setuju na imena polja
 kolonaA = StringVar()
-kolonaA.set('***A***')
+#kolonaA.set('***A***')
 A1 = StringVar()
 A1.set('A1')
 A2 = StringVar()
@@ -72,7 +72,7 @@ A4 = StringVar()
 A4.set('A4')
 #VARIJABLE B
 kolonaB = StringVar()
-kolonaB.set('***B***')
+#kolonaB.set('***B***')
 B1 = StringVar()
 B1.set('B1')
 B2 = StringVar()
@@ -83,7 +83,7 @@ B4 = StringVar()
 B4.set('B4')
 #VARIJABLE C
 kolonaC = StringVar()
-kolonaC.set('***C***')
+#kolonaC.set('***C***')
 C1 = StringVar()
 C1.set('C1')
 C2 = StringVar()
@@ -95,7 +95,7 @@ C4.set('C4')
 
 #VARIJABLE D
 kolonaD = StringVar()
-kolonaD.set('***D***')
+#kolonaD.set('***D***')
 D1 = StringVar()
 D1.set('D1')
 D2 = StringVar()
@@ -105,73 +105,165 @@ D3.set('D3')
 D4 = StringVar()
 D4.set('D4')
 
+#funkcija koja setuje labelu koja daje informacije i uputstva tokom igre.. pojavljuje se 2 sekunde i onda nestane
+def infoPanel(str):
+       info.set(str)
+       root.after(2000, clear)
+def clear():
+       info.set("")
 
 
 
-def state(dugme):   #Funkcija se pokreće kada se klikne na dugme onda se dugme setuje na određenu vrednost iz fajla Asoc.xml
+def state(dugme):
+       global klik
        if dugme == dugmeA1:
-              dugme.config(state = DISABLED)
-              A1.set(podaciA[0].attributes["vrednostA"].value)
+              if klik == 0:
+                     dugme.config(state = DISABLED)
+                     A1.set(podaciA[0].attributes["vrednostA"].value)
+                     klik += 1
+              else:
+                     infoPanel('Ponudite odgovor!!')
+                     return
        elif dugme == dugmeA2:
-              dugme.config(state = DISABLED)
-              A2.set(podaciA[1].attributes["vrednostA"].value)
+              if klik == 0:
+                     dugme.config(state = DISABLED)
+                     A2.set(podaciA[1].attributes["vrednostA"].value)
+                     klik += 1
+              else:
+                     infoPanel('Ponudite odgovor!!')
+                     return
        elif dugme == dugmeA3:
-              dugme.config(state = DISABLED)
-              A3.set(podaciA[2].attributes["vrednostA"].value)
+              if klik == 0:
+                     dugme.config(state = DISABLED)
+                     A3.set(podaciA[2].attributes["vrednostA"].value)
+                     klik += 1
+              else:
+                     infoPanel('Ponudite odgovor!!')
+                     return
        elif dugme == dugmeA4:
-              dugme.config(state = DISABLED)
-              A4.set(podaciA[3].attributes["vrednostA"].value)
+              if klik == 0:
+                     dugme.config(state = DISABLED)
+                     A4.set(podaciA[3].attributes["vrednostA"].value)
+                     klik += 1
+              else:
+                     infoPanel('Ponudite odgovor!!')
+                     return
        elif dugme == dugmeB1:
-              dugme.config(state = DISABLED)
-              B1.set(podaciB[0].attributes["vrednostB"].value)
+              if klik == 0:
+                     dugme.config(state = DISABLED)
+                     B1.set(podaciB[0].attributes["vrednostB"].value)
+                     klik += 1
+              else:
+                     infoPanel('Ponudite odgovor!!')
+                     return
        elif dugme == dugmeB2:
-              dugme.config(state = DISABLED)
-              B2.set(podaciB[1].attributes["vrednostB"].value)
+              if klik == 0:
+                     dugme.config(state = DISABLED)
+                     B2.set(podaciB[1].attributes["vrednostB"].value)
+                     klik += 1
+              else:
+                     infoPanel('Ponudite odgovor!!')
+                     return
        elif dugme == dugmeB3:
-              dugme.config(state = DISABLED)
-              B3.set(podaciB[2].attributes["vrednostB"].value)
+              if klik == 0:
+                     dugme.config(state = DISABLED)
+                     B3.set(podaciB[2].attributes["vrednostB"].value)
+                     klik += 1
+              else:
+                     infoPanel('Ponudite odgovor!!')
+                     return
        elif dugme == dugmeB4:
-              dugme.config(state = DISABLED)
-              B4.set(podaciB[3].attributes["vrednostB"].value)
+              if klik == 0:
+                     dugme.config(state = DISABLED)
+                     B4.set(podaciB[3].attributes["vrednostB"].value)
+                     klik += 1
+              else:
+                     infoPanel('Ponudite odgovor!!')
+                     return
        elif dugme == dugmeC1:
-              dugme.config(state = DISABLED)
-              C1.set(podaciC[0].attributes["vrednostC"].value)
+              if klik == 0:
+                     dugme.config(state = DISABLED)
+                     C1.set(podaciC[0].attributes["vrednostC"].value)
+                     klik += 1
+              else:
+                     infoPanel('Ponudite odgovor!!')
+                     return
        elif dugme == dugmeC2:
-              dugme.config(state = DISABLED)
-              C2.set(podaciC[1].attributes["vrednostC"].value)
+              if klik == 0:
+                     dugme.config(state = DISABLED)
+                     C2.set(podaciC[1].attributes["vrednostC"].value)
+                     klik += 1
+              else:
+                     infoPanel('Ponudite odgovor!!')
+                     return
        elif dugme == dugmeC3:
-              dugme.config(state = DISABLED)
-              C3.set(podaciC[2].attributes["vrednostC"].value)
+              if klik == 0:
+                     dugme.config(state = DISABLED)
+                     C3.set(podaciC[2].attributes["vrednostC"].value)
+                     klik += 1
+              else:
+                     infoPanel('Ponudite odgovor!!')
+                     return
        elif dugme == dugmeC4:
-              dugme.config(state = DISABLED)
-              C4.set(podaciC[3].attributes["vrednostC"].value)
+              if klik == 0:
+                     dugme.config(state = DISABLED)
+                     C4.set(podaciC[3].attributes["vrednostC"].value)
+                     klik += 1
+              else:
+                     infoPanel('Ponudite odgovor!!')
+                     return
        elif dugme == dugmeD1:
-              dugme.config(state = DISABLED)
-              D1.set(podaciD[0].attributes["vrednostD"].value)
+              if klik == 0:
+                     dugme.config(state = DISABLED)
+                     D1.set(podaciD[0].attributes["vrednostD"].value)
+                     klik += 1
+              else:
+                     infoPanel('Ponudite odgovor!!')
+                     return
        elif dugme == dugmeD2:
-              dugme.config(state = DISABLED)
-              D2.set(podaciD[1].attributes["vrednostD"].value)
+              if klik == 0:
+                     dugme.config(state = DISABLED)
+                     D2.set(podaciD[1].attributes["vrednostD"].value)
+                     klik += 1
+              else:
+                     infoPanel('Ponudite odgovor!!')
+                     return
        elif dugme == dugmeD3:
-              dugme.config(state = DISABLED)
-              D3.set(podaciD[2].attributes["vrednostD"].value)
+              if klik == 0:
+                     dugme.config(state = DISABLED)
+                     D3.set(podaciD[2].attributes["vrednostD"].value)
+                     klik += 1
+              else:
+                     infoPanel('Ponudite odgovor!!')
+                     return
        elif dugme == dugmeD4:
-              dugme.config(state = DISABLED)
-              D4.set(podaciD[3].attributes["vrednostD"].value)
+              if klik == 0:
+                     dugme.config(state = DISABLED)
+                     D4.set(podaciD[3].attributes["vrednostD"].value)
+                     klik += 1
+              else:
+                     infoPanel('Ponudite odgovor!!')
+                     return
+
 
 def brisiEntry(event):
        event.widget.delete(0, 'end') #funkcija brise bilo koji entry koji joj proslijedimo
        return None
-def setEntry(event):
-       if root.focus_get()!= event.widget: #funkcija koja setuje entryije na pocetne vrijednosti kada kliknete
-              kolonaA.set('***A***')             #bilo gdje van entryja
-              kolonaB.set('***B***')
-              kolonaC.set('***C***')
-              kolonaD.set('***D***')
-              rjesenje.set('*rjesenje*')
-              root.focus_set()
-def tacanOdgovor():
+##def setEntry(event):
+##       if root.focus_get()!= event.widget: #funkcija koja setuje entryije na pocetne vrijednosti kada kliknete
+##              kolonaA.set('***A***')             #bilo gdje van entryja
+##              kolonaB.set('***B***')
+##              kolonaC.set('***C***')
+##              kolonaD.set('***D***')
+##              rjesenje.set('*rjesenje*')
+##              root.focus_set()
+
+
+# funkcije tacan odgovor su razdvojene po kolonama (A, B, C, D), provjeravaju da li je odgovor tacan i otkrivaju polja kolona..
+def tacanOdgovorA(): 
        brojac['text'] =''
        global c
+       global klik   
        root.after_cancel(c)
        vrijeme(16)
        if kolonaA.get() == rKolonaA:
@@ -190,7 +282,7 @@ def tacanOdgovor():
                      dugmeA4["bg"] = "blue"
                      kolonaAent.config(state=DISABLED)
                      kolonaA.set("*{}*".format(rKolonaA))
-              else:
+              elif crveni['bg'] == 'yellow':
                      dugmeA1.config(state = DISABLED)
                      A1.set(podaciA[0].attributes["vrednostA"].value)
                      dugmeA1["bg"] = "red"
@@ -204,18 +296,33 @@ def tacanOdgovor():
                      A4.set(podaciA[3].attributes["vrednostA"].value)
                      dugmeA4["bg"] = "red"
                      kolonaAent.config(state=DISABLED)
-                     kolonaA.set("*{}*".format(rKolonaA))
+                     kolonaA.set("{}".format(rKolonaA))
+       elif kolonaA.get() == '':
+              infoPanel('Unesite odgovor!!')
+              klik = 1
+              return
        elif kolonaA.get() != rKolonaA:
+              infoPanel('Odgovor netacan!')
               if plavi['bg'] == 'yellow':
                      crveni['bg'] = 'yellow'
                      plavi['bg'] = 'blue'
                      root.after_cancel(c)
                      vrijeme(16)
-              else:
+                     kolonaA.set("")
+                     root.focus_set()
+              elif crveni['bg'] == 'yellow':
                      plavi['bg'] = 'yellow'
                      crveni['bg'] = 'red'
                      root.after_cancel(c)
                      vrijeme(16)
+                     kolonaA.set("")
+                     root.focus_set()
+def tacanOdgovorB():
+       brojac['text'] =''
+       global c
+       global klik
+       root.after_cancel(c)
+       vrijeme(16)                     
        if kolonaB.get() == rKolonaB:
               if plavi['bg'] == 'yellow':
                      dugmeB1.config(state = DISABLED)
@@ -232,7 +339,7 @@ def tacanOdgovor():
                      dugmeB4["bg"] = "blue"
                      kolonaBent.config(state=DISABLED)
                      kolonaB.set("*{}*".format(rKolonaB))
-              else:
+              elif crveni['bg']== 'yellow':
                      dugmeB1.config(state = DISABLED)
                      B1.set(podaciB[0].attributes["vrednostB"].value)
                      dugmeB1["bg"] = "red"
@@ -247,27 +354,146 @@ def tacanOdgovor():
                      dugmeB4["bg"] = "red"
                      kolonaBent.config(state=DISABLED)
                      kolonaB.set("*{}*".format(rKolonaB))
-                     
+       elif kolonaB.get() == '':
+              infoPanel('Unesite odgovor!!')
+              klik = 1
+              return
+       elif kolonaB.get() != rKolonaB:
+              infoPanel('Odgovor netacan!')
+              if plavi['bg'] == 'yellow':
+                     crveni['bg'] = 'yellow'
+                     plavi['bg'] = 'blue'
+                     root.after_cancel(c)
+                     vrijeme(16)
+                     kolonaB.set("")
+                     root.focus_set()
+              else:
+                     plavi['bg'] = 'yellow'
+                     crveni['bg'] = 'red'
+                     root.after_cancel(c)
+                     vrijeme(16)
+                     kolonaB.set("")
+                     root.focus_set()
+def tacanOdgovorC():
+       brojac['text'] =''
+       global c
+       global klik
+       root.after_cancel(c)
+       vrijeme(16)                     
        if kolonaC.get() == rKolonaC:
-              dugmeC1.config(state = DISABLED)
-              C1.set(podaciC[0].attributes["vrednostC"].value)
-              dugmeC2.config(state = DISABLED)
-              C2.set(podaciC[1].attributes["vrednostC"].value)
-              dugmeC3.config(state = DISABLED)
-              C3.set(podaciC[2].attributes["vrednostC"].value)
-              dugmeC4.config(state = DISABLED)
-              C4.set(podaciC[3].attributes["vrednostC"].value)
-              kolonaCent.config(state=DISABLED)
+              if plavi['bg'] == 'yellow':
+                     dugmeC1.config(state = DISABLED)
+                     C1.set(podaciC[0].attributes["vrednostC"].value)
+                     dugmeC1["bg"] = "blue"
+                     dugmeC2.config(state = DISABLED)
+                     C2.set(podaciC[1].attributes["vrednostC"].value)
+                     dugmeC2["bg"] = "blue"
+                     dugmeC3.config(state = DISABLED)
+                     C3.set(podaciC[2].attributes["vrednostC"].value)
+                     dugmeC3["bg"] = "blue"
+                     dugmeC4.config(state = DISABLED)
+                     C4.set(podaciC[3].attributes["vrednostC"].value)
+                     dugmeC4["bg"] = "blue"
+                     kolonaCent.config(state=DISABLED)
+                     kolonaC.set("*{}*".format(rKolonaC))
+              elif crveni['bg']== 'yellow':
+                     dugmeC1.config(state = DISABLED)
+                     C1.set(podaciC[0].attributes["vrednostC"].value)
+                     dugmeC1["bg"] = "red"
+                     dugmeC2.config(state = DISABLED)
+                     C2.set(podaciC[1].attributes["vrednostC"].value)
+                     dugmeC2["bg"] = "red"
+                     dugmeC3.config(state = DISABLED)
+                     C3.set(podaciC[2].attributes["vrednostC"].value)
+                     dugmeC3["bg"] = "red"
+                     dugmeC4.config(state = DISABLED)
+                     C4.set(podaciC[3].attributes["vrednostC"].value)
+                     dugmeC4["bg"] = "red"
+                     kolonaCent.config(state=DISABLED)
+                     kolonaC.set("*{}*".format(rKolonaC))
+       elif kolonaC.get() == '':
+              infoPanel('Unesite odgovor!!')
+              klik = 1
+              return
+       elif kolonaC.get() != rKolonaC:
+              infoPanel('Odgovor netacan!')
+              if plavi['bg'] == 'yellow':
+                     crveni['bg'] = 'yellow'
+                     plavi['bg'] = 'blue'
+                     root.after_cancel(c)
+                     vrijeme(16)
+                     kolonaC.set("")
+                     root.focus_set()
+              else:
+                     plavi['bg'] = 'yellow'
+                     crveni['bg'] = 'red'
+                     root.after_cancel(c)
+                     vrijeme(16)
+                     kolonaC.set("")
+                     root.focus_set()                     
+def tacanOdgovorD():
+       brojac['text'] =''
+       global c
+       global klik
+       root.after_cancel(c)
+       vrijeme(16)                     
        if kolonaD.get() == rKolonaD:
-              dugmeD1.config(state = DISABLED)
-              D1.set(podaciD[0].attributes["vrednostD"].value)
-              dugmeD2.config(state = DISABLED)
-              D2.set(podaciD[1].attributes["vrednostD"].value)
-              dugmeD3.config(state = DISABLED)
-              D3.set(podaciD[2].attributes["vrednostD"].value)
-              dugmeD4.config(state = DISABLED)
-              D4.set(podaciD[3].attributes["vrednostD"].value)
-              kolonaDent.config(state=DISABLED)
+              if plavi['bg'] == 'yellow':
+                     dugmeD1.config(state = DISABLED)
+                     D1.set(podaciD[0].attributes["vrednostD"].value)
+                     dugmeD1["bg"] = "blue"
+                     dugmeD2.config(state = DISABLED)
+                     D2.set(podaciD[1].attributes["vrednostD"].value)
+                     dugmeD2["bg"] = "blue"
+                     dugmeD3.config(state = DISABLED)
+                     D3.set(podaciD[2].attributes["vrednostD"].value)
+                     dugmeD3["bg"] = "blue"
+                     dugmeD4.config(state = DISABLED)
+                     D4.set(podaciD[3].attributes["vrednostD"].value)
+                     dugmeD4["bg"] = "blue"
+                     kolonaDent.config(state=DISABLED)
+                     kolonaD.set("*{}*".format(rKolonaD))
+              elif crveni['bg']== 'yellow':
+                     dugmeD1.config(state = DISABLED)
+                     D1.set(podaciD[0].attributes["vrednostD"].value)
+                     dugmeD1["bg"] = "red"
+                     dugmeD2.config(state = DISABLED)
+                     D2.set(podaciD[1].attributes["vrednostD"].value)
+                     dugmeD2["bg"] = "red"
+                     dugmeD3.config(state = DISABLED)
+                     D3.set(podaciD[2].attributes["vrednostD"].value)
+                     dugmeD3["bg"] = "red"
+                     dugmeD4.config(state = DISABLED)
+                     D4.set(podaciD[3].attributes["vrednostD"].value)
+                     dugmeD4["bg"] = "red"
+                     kolonaDent.config(state=DISABLED)
+                     kolonaD.set("*{}*".format(rKolonaB))
+       elif kolonaD.get() == '':
+              infoPanel('Unesite odgovor!!')
+              klik = 1
+              return
+       
+       elif kolonaD.get() != rKolonaD:
+              infoPanel('Odgovor netacan!')
+              if plavi['bg'] == 'yellow':
+                     crveni['bg'] = 'yellow'
+                     plavi['bg'] = 'blue'
+                     root.after_cancel(c)
+                     vrijeme(16)
+                     kolonaD.set("")
+                     root.focus_set()
+              else:
+                     plavi['bg'] = 'yellow'
+                     crveni['bg'] = 'red'
+                     root.after_cancel(c)
+                     vrijeme(16)
+                     kolonaD.set("")
+                     root.focus_set()
+       
+def tacanOdgovorR():
+       brojac['text'] ='00'
+       global c
+       root.after_cancel(c)
        if rjesenjeEnt.get() == konacno:
               dugmeA1.config(state = DISABLED)
               A1.set(podaciA[0].attributes["vrednostA"].value)
@@ -312,7 +538,26 @@ def tacanOdgovor():
               D4.set(podaciD[3].attributes["vrednostD"].value)
               kolonaD.set(rKolonaD)
               kolonaDent.config(state=DISABLED)
-            
+def odgovor(): # funkcija koja provjeri u kom je entriju kursor a zatim poziva funkciju tacanOdgovor za odredjenu kolonu vezanu za taj entry.. 
+       global klik
+       if klik == 1:
+              klik = 0
+              if root.focus_get() == kolonaAent:
+                     tacanOdgovorA()
+              elif root.focus_get() == kolonaBent:
+                     tacanOdgovorB()
+              elif root.focus_get() == kolonaCent:
+                     tacanOdgovorC()
+              elif root.focus_get() == kolonaDent:
+                     tacanOdgovorD()
+              elif root.focus_get() == rjesenjeEnt:
+                     tacanOdgovorR()
+              elif root.focus_get() != kolonaAent and root.focus_get() != kolonaBent and root.focus_get() != kolonaCent and root.focus_get() != kolonaDent and root.focus_get() != rjesenjeEnt:
+                     return
+       else:
+              infoPanel('Otvorite polje!!')
+              return
+
 #kolone A
 
 dugmeA1 = tk.Button(root, textvariable = A1, command = lambda: state(dugmeA1),
@@ -414,7 +659,7 @@ kolonaDent.bind("<Button-1>", brisiEntry)
 sijalica = PhotoImage(file='sijalica.png')
 sijalica = sijalica.subsample(10)
 #dugme
-potvrdi = tk.Button(root, text="Potvrdi", font = BUTT_FONT, bg='#02A2F2', fg='yellow',  command = tacanOdgovor)
+potvrdi = tk.Button(root, text="Potvrdi", font = BUTT_FONT, bg='#02A2F2', fg='yellow',  command = odgovor)
 potvrdi.grid(column=1, row=5)
 potvrdi.place(x=700, y=283)
 plavi = tk.Button(root, image = sijalica, bg='blue')
@@ -426,12 +671,11 @@ crveni.place(x=470)
 # brojac
 brojac = tk.Label(root, width=5, font=RJ_FONT, relief=SUNKEN)
 brojac.place(x=350)
-#slika
-slika=PhotoImage(file='sko.png')
-slika=slika.subsample(5,5)
-slikalabel=tk.Label(root,image=slika)
-slikalabel.grid(column=0, row=8,columnspan=1, sticky=(N, S, E, W))
-slikalabel.place(x=330, y=450)
+#infoLabel
+
+infolabel=tk.Label(root,textvariable = info, font=BUTT_FONT, fg='yellow', bg='#002240')
+infolabel.grid(column=0, row=8,columnspan=1, sticky=(N, S, E, W))
+infolabel.place(x=330, y=450)
 
 
 #root.bind("<Button-1>", setEntry)
