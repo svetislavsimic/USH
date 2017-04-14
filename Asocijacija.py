@@ -1,6 +1,8 @@
 from tkinter import *
 from tkinter import ttk
 import tkinter as tk
+import random
+import os
 from xml.dom import minidom    # minidom je deo biblioteke XML za parsiranje
 e = minidom.parse("Asoc.xml")  # Povezvanje parsera sa Asoc.xml
 podaciA=e.getElementsByTagName("poljeA")   #Dohvatanje elemenata iz XML-a
@@ -23,6 +25,7 @@ klik = 0   # klik sluzi za sprjecavanje otvaranja vise polja odjednom i unosenja
 c = None
 def vrijeme(count): # tajmer koji prebacuje zutu boju sa igraca na igraca
        global c
+       global listaFunkcija
        brojac['text'] = count
        if count >= 0:
               if count == 0:
@@ -32,13 +35,38 @@ def vrijeme(count): # tajmer koji prebacuje zutu boju sa igraca na igraca
                      else:
                             crveni['bg']='red'
                             plavi['bg']='yellow'
-                     count = 16
+                     random.choice(listaFunkcija)()
+                     count = 21
               c=root.after(1000, vrijeme, count-1)
 def start(): # start se poziva iz prozorcica koji sluzi da startuje tajmer i pokrene igru
-       vrijeme(16)
+       vrijeme(21)
        plavi['bg']= 'yellow'
        popUp.destroy()
        root.attributes("-topmost", True)
+
+rijeseneKolone = []
+listaOtvPolja = []
+def reRun():
+       popUp.destroy()
+       root.destroy()
+       os.system('Asocijacija.py')
+       
+def newGame():
+       popUp = Toplevel()
+       popUp.geometry('300x200+375+180')
+       popUp.attributes("-topmost", True)
+       popUp.title('Igra Asocijacije')
+       popUp.configure(background='#002240')
+       obavjestenje = tk.Label(popUp, text='--Igra asocijacije--',
+                               font=TOP_FONT, bg='#002240', fg='yellow')
+       obavjestenje.place(x=60)
+       pocni = tk.Button(popUp, text='Nova Igra', width=15, font=ENT_FONT, bg="#02A2F2", fg="yellow", command=reRun)
+       pocni.place(x=50, y=80)
+       zatvori = tk.Button(popUp, text='Zatvori', width=15, font=ENT_FONT, bg="#02A2F2", fg="yellow", command= lambda: root.destroy())
+       zatvori.place(x=50, y=140)
+
+
+
 root = Tk()
 #toplevel se pokrece pri pokretanu programa.
 popUp = Toplevel()
@@ -46,7 +74,7 @@ popUp.geometry('300x200+375+180')
 popUp.attributes("-topmost", True)
 popUp.title('Igra Asocijacije')
 popUp.configure(background='#002240')
-obavjestenje = tk.Label(popUp, text='--Igra acocijacija--',
+obavjestenje = tk.Label(popUp, text='--Igra asocijacije--',
                         font=TOP_FONT, bg='#002240', fg='yellow')
 obavjestenje.place(x=60)
 pocni = tk.Button(popUp, text='Pocni igru', width=15, font=ENT_FONT, bg="#02A2F2", fg="yellow", command=start)
@@ -55,6 +83,9 @@ pocni.place(x=50, y=80)
 root.configure(background='#002240')
 root.geometry('800x600+200+50')
 root.title('Igra Asocijacije')
+
+
+
 
 info = StringVar()
 rjesenje = StringVar()
@@ -113,136 +144,152 @@ def clear():
        info.set("")
 
 
-
 def state(dugme):
+       global listaOtvPolja
        global klik
        if dugme == dugmeA1:
               if klik == 0:
                      dugme.config(state = DISABLED)
                      A1.set(podaciA[0].attributes["vrednostA"].value)
                      klik += 1
+                     listaOtvPolja.append('A1')
               else:
-                     infoPanel('Ponudite odgovor!!')
+                     infoPanel('-->Ponudite odgovor!!')
                      return
        elif dugme == dugmeA2:
               if klik == 0:
                      dugme.config(state = DISABLED)
                      A2.set(podaciA[1].attributes["vrednostA"].value)
                      klik += 1
+                     listaOtvPolja.append('A2')
               else:
-                     infoPanel('Ponudite odgovor!!')
+                     infoPanel('-->Ponudite odgovor!!')
                      return
        elif dugme == dugmeA3:
               if klik == 0:
                      dugme.config(state = DISABLED)
                      A3.set(podaciA[2].attributes["vrednostA"].value)
                      klik += 1
+                     listaOtvPolja.append('A3')
               else:
-                     infoPanel('Ponudite odgovor!!')
+                     infoPanel('-->Ponudite odgovor!!')
                      return
        elif dugme == dugmeA4:
               if klik == 0:
                      dugme.config(state = DISABLED)
                      A4.set(podaciA[3].attributes["vrednostA"].value)
                      klik += 1
+                     listaOtvPolja.append('A4')
               else:
-                     infoPanel('Ponudite odgovor!!')
+                     infoPanel('-->Ponudite odgovor!!')
                      return
        elif dugme == dugmeB1:
               if klik == 0:
                      dugme.config(state = DISABLED)
                      B1.set(podaciB[0].attributes["vrednostB"].value)
                      klik += 1
+                     listaOtvPolja.append('B1')
               else:
-                     infoPanel('Ponudite odgovor!!')
+                     infoPanel('-->Ponudite odgovor!!')
                      return
        elif dugme == dugmeB2:
               if klik == 0:
                      dugme.config(state = DISABLED)
                      B2.set(podaciB[1].attributes["vrednostB"].value)
                      klik += 1
+                     listaOtvPolja.append('B2')
               else:
-                     infoPanel('Ponudite odgovor!!')
+                     infoPanel('-->Ponudite odgovor!!')
                      return
        elif dugme == dugmeB3:
               if klik == 0:
                      dugme.config(state = DISABLED)
                      B3.set(podaciB[2].attributes["vrednostB"].value)
                      klik += 1
+                     listaOtvPolja.append('B3')
               else:
-                     infoPanel('Ponudite odgovor!!')
+                     infoPanel('-->Ponudite odgovor!!')
                      return
        elif dugme == dugmeB4:
               if klik == 0:
                      dugme.config(state = DISABLED)
                      B4.set(podaciB[3].attributes["vrednostB"].value)
                      klik += 1
+                     listaOtvPolja.append('B4')
               else:
-                     infoPanel('Ponudite odgovor!!')
+                     infoPanel('-->Ponudite odgovor!!')
                      return
        elif dugme == dugmeC1:
               if klik == 0:
                      dugme.config(state = DISABLED)
                      C1.set(podaciC[0].attributes["vrednostC"].value)
                      klik += 1
+                     listaOtvPolja.append('C1')
               else:
-                     infoPanel('Ponudite odgovor!!')
+                     infoPanel('-->Ponudite odgovor!!')
                      return
        elif dugme == dugmeC2:
               if klik == 0:
                      dugme.config(state = DISABLED)
                      C2.set(podaciC[1].attributes["vrednostC"].value)
                      klik += 1
+                     listaOtvPolja.append('C2')
               else:
-                     infoPanel('Ponudite odgovor!!')
+                     infoPanel('-->Ponudite odgovor!!')
                      return
        elif dugme == dugmeC3:
               if klik == 0:
                      dugme.config(state = DISABLED)
                      C3.set(podaciC[2].attributes["vrednostC"].value)
                      klik += 1
+                     listaOtvPolja.append('C3')
               else:
-                     infoPanel('Ponudite odgovor!!')
+                     infoPanel('-->Ponudite odgovor!!')
                      return
        elif dugme == dugmeC4:
               if klik == 0:
                      dugme.config(state = DISABLED)
                      C4.set(podaciC[3].attributes["vrednostC"].value)
                      klik += 1
+                     listaOtvPolja.append('C4')
               else:
-                     infoPanel('Ponudite odgovor!!')
+                     infoPanel('-->Ponudite odgovor!!')
                      return
        elif dugme == dugmeD1:
               if klik == 0:
                      dugme.config(state = DISABLED)
                      D1.set(podaciD[0].attributes["vrednostD"].value)
                      klik += 1
+                     listaOtvPolja.append('D1')
               else:
-                     infoPanel('Ponudite odgovor!!')
+                     infoPanel('-->Ponudite odgovor!!')
                      return
        elif dugme == dugmeD2:
               if klik == 0:
                      dugme.config(state = DISABLED)
                      D2.set(podaciD[1].attributes["vrednostD"].value)
                      klik += 1
+                     listaOtvPolja.append('D2')
               else:
-                     infoPanel('Ponudite odgovor!!')
+                     infoPanel('-->Ponudite odgovor!!')
                      return
        elif dugme == dugmeD3:
               if klik == 0:
                      dugme.config(state = DISABLED)
                      D3.set(podaciD[2].attributes["vrednostD"].value)
                      klik += 1
+                     listaOtvPolja.append('D3')
               else:
-                     infoPanel('Ponudite odgovor!!')
+                     infoPanel('-->Ponudite odgovor!!')
                      return
        elif dugme == dugmeD4:
               if klik == 0:
                      dugme.config(state = DISABLED)
                      D4.set(podaciD[3].attributes["vrednostD"].value)
                      klik += 1
+                     listaOtvPolja.append('D4')
               else:
-                     infoPanel('Ponudite odgovor!!')
+                     infoPanel('-->Ponudite odgovor!!')
                      return
 
 
@@ -265,8 +312,10 @@ def tacanOdgovorA():
        global c
        global klik   
        root.after_cancel(c)
-       vrijeme(16)
+       vrijeme(21)
        if kolonaA.get() == rKolonaA:
+              klik=1
+              rijeseneKolone.append("A")
               if plavi['bg'] == 'yellow':
                      dugmeA1.config(state = DISABLED)
                      A1.set(podaciA[0].attributes["vrednostA"].value)
@@ -298,11 +347,11 @@ def tacanOdgovorA():
                      kolonaAent.config(state=DISABLED)
                      kolonaA.set("{}".format(rKolonaA))
        elif kolonaA.get() == '':
-              infoPanel('Unesite odgovor!!')
+              infoPanel('-->Unesite odgovor!!')
               klik = 1
               return
        elif kolonaA.get() != rKolonaA:
-              infoPanel('Odgovor netacan!')
+              infoPanel('-->Odgovor netacan!')
               if plavi['bg'] == 'yellow':
                      crveni['bg'] = 'yellow'
                      plavi['bg'] = 'blue'
@@ -322,8 +371,10 @@ def tacanOdgovorB():
        global c
        global klik
        root.after_cancel(c)
-       vrijeme(16)                     
+       vrijeme(21)                     
        if kolonaB.get() == rKolonaB:
+              klik=1
+              rijeseneKolone.append("B")
               if plavi['bg'] == 'yellow':
                      dugmeB1.config(state = DISABLED)
                      B1.set(podaciB[0].attributes["vrednostB"].value)
@@ -355,11 +406,11 @@ def tacanOdgovorB():
                      kolonaBent.config(state=DISABLED)
                      kolonaB.set("*{}*".format(rKolonaB))
        elif kolonaB.get() == '':
-              infoPanel('Unesite odgovor!!')
+              infoPanel('-->Unesite odgovor!!')
               klik = 1
               return
        elif kolonaB.get() != rKolonaB:
-              infoPanel('Odgovor netacan!')
+              infoPanel('-->Odgovor netacan!')
               if plavi['bg'] == 'yellow':
                      crveni['bg'] = 'yellow'
                      plavi['bg'] = 'blue'
@@ -379,8 +430,9 @@ def tacanOdgovorC():
        global c
        global klik
        root.after_cancel(c)
-       vrijeme(16)                     
+       vrijeme(21)                     
        if kolonaC.get() == rKolonaC:
+              klik=1
               if plavi['bg'] == 'yellow':
                      dugmeC1.config(state = DISABLED)
                      C1.set(podaciC[0].attributes["vrednostC"].value)
@@ -412,11 +464,11 @@ def tacanOdgovorC():
                      kolonaCent.config(state=DISABLED)
                      kolonaC.set("*{}*".format(rKolonaC))
        elif kolonaC.get() == '':
-              infoPanel('Unesite odgovor!!')
+              infoPanel('-->Unesite odgovor!!')
               klik = 1
               return
        elif kolonaC.get() != rKolonaC:
-              infoPanel('Odgovor netacan!')
+              infoPanel('-->Odgovor netacan!')
               if plavi['bg'] == 'yellow':
                      crveni['bg'] = 'yellow'
                      plavi['bg'] = 'blue'
@@ -436,8 +488,9 @@ def tacanOdgovorD():
        global c
        global klik
        root.after_cancel(c)
-       vrijeme(16)                     
+       vrijeme(21)                     
        if kolonaD.get() == rKolonaD:
+              klik=1
               if plavi['bg'] == 'yellow':
                      dugmeD1.config(state = DISABLED)
                      D1.set(podaciD[0].attributes["vrednostD"].value)
@@ -469,12 +522,12 @@ def tacanOdgovorD():
                      kolonaDent.config(state=DISABLED)
                      kolonaD.set("*{}*".format(rKolonaB))
        elif kolonaD.get() == '':
-              infoPanel('Unesite odgovor!!')
+              infoPanel('-->Unesite odgovor!!')
               klik = 1
               return
        
        elif kolonaD.get() != rKolonaD:
-              infoPanel('Odgovor netacan!')
+              infoPanel('-->Odgovor netacan!')
               if plavi['bg'] == 'yellow':
                      crveni['bg'] = 'yellow'
                      plavi['bg'] = 'blue'
@@ -495,49 +548,172 @@ def tacanOdgovorR():
        global c
        root.after_cancel(c)
        if rjesenjeEnt.get() == konacno:
-              dugmeA1.config(state = DISABLED)
-              A1.set(podaciA[0].attributes["vrednostA"].value)
-              dugmeA2.config(state = DISABLED)
-              A2.set(podaciA[1].attributes["vrednostA"].value)
-              dugmeA3.config(state = DISABLED)
-              A3.set(podaciA[2].attributes["vrednostA"].value)
-              dugmeA4.config(state = DISABLED)
-              A4.set(podaciA[3].attributes["vrednostA"].value)
-              kolonaA.set(rKolonaA)
-              kolonaAent.config(state=DISABLED)
+              if plavi['bg'] == 'yellow':
+                     if 'A' in rijeseneKolone:
+                            pass
+                     else:
+                            dugmeA1.config(state = DISABLED)
+                            A1.set(podaciA[0].attributes["vrednostA"].value)
+                            dugmeA1['bg'] = 'blue'
+                            dugmeA2.config(state = DISABLED)
+                            A2.set(podaciA[1].attributes["vrednostA"].value)
+                            dugmeA2['bg'] = 'blue'
+                            dugmeA3.config(state = DISABLED)
+                            A3.set(podaciA[2].attributes["vrednostA"].value)
+                            dugmeA3['bg'] = 'blue'
+                            dugmeA4.config(state = DISABLED)
+                            A4.set(podaciA[3].attributes["vrednostA"].value)
+                            dugmeA4['bg'] = 'blue'
+                            kolonaA.set(rKolonaA)
+                            kolonaAent.config(state=DISABLED)
               
-              dugmeB1.config(state = DISABLED)
-              B1.set(podaciB[0].attributes["vrednostB"].value)
-              dugmeB2.config(state = DISABLED)
-              B2.set(podaciB[1].attributes["vrednostB"].value)
-              dugmeB3.config(state = DISABLED)
-              B3.set(podaciB[2].attributes["vrednostB"].value)
-              dugmeB4.config(state = DISABLED)
-              B4.set(podaciB[3].attributes["vrednostB"].value)
-              kolonaB.set(rKolonaB)
-              kolonaBent.config(state=DISABLED)
+                     if 'B' in rijeseneKolone:
+                            pass
+                     else:
+                            dugmeB1.config(state = DISABLED)
+                            B1.set(podaciB[0].attributes["vrednostB"].value)
+                            dugmeB1['bg'] = 'blue'
+                            dugmeB2.config(state = DISABLED)
+                            B2.set(podaciB[1].attributes["vrednostB"].value)
+                            dugmeB2['bg'] = 'blue'
+                            dugmeB3.config(state = DISABLED)
+                            B3.set(podaciB[2].attributes["vrednostB"].value)
+                            dugmeB3['bg'] = 'blue'
+                            dugmeB4.config(state = DISABLED)
+                            B4.set(podaciB[3].attributes["vrednostB"].value)
+                            dugmeB4['bg'] = 'blue'
+                            kolonaB.set(rKolonaB)
+                            kolonaBent.config(state=DISABLED)
 
-              dugmeC1.config(state = DISABLED)
-              C1.set(podaciC[0].attributes["vrednostC"].value)
-              dugmeC2.config(state = DISABLED)
-              C2.set(podaciC[1].attributes["vrednostC"].value)
-              dugmeC3.config(state = DISABLED)
-              C3.set(podaciC[2].attributes["vrednostC"].value)
-              dugmeC4.config(state = DISABLED)
-              C4.set(podaciC[3].attributes["vrednostC"].value)
-              kolonaC.set(rKolonaC)
-              kolonaCent.config(state=DISABLED)
+                     if 'C' in rijeseneKolone:
+                            pass
+                     else:
+                            dugmeC1.config(state = DISABLED)
+                            C1.set(podaciC[0].attributes["vrednostC"].value)
+                            dugmeC1['bg'] = 'blue'
+                            dugmeC2.config(state = DISABLED)
+                            C2.set(podaciC[1].attributes["vrednostC"].value)
+                            dugmeC2['bg'] = 'blue'
+                            dugmeC3.config(state = DISABLED)
+                            C3.set(podaciC[2].attributes["vrednostC"].value)
+                            dugmeC3['bg'] = 'blue'
+                            dugmeC4.config(state = DISABLED)
+                            C4.set(podaciC[3].attributes["vrednostC"].value)
+                            dugmeC4['bg'] = 'blue'
+                            kolonaC.set(rKolonaC)
+                            kolonaCent.config(state=DISABLED)
 
-              dugmeD1.config(state = DISABLED)
-              D1.set(podaciD[0].attributes["vrednostD"].value)
-              dugmeD2.config(state = DISABLED)
-              D2.set(podaciD[1].attributes["vrednostD"].value)
-              dugmeD3.config(state = DISABLED)
-              D3.set(podaciD[2].attributes["vrednostD"].value)
-              dugmeD4.config(state = DISABLED)
-              D4.set(podaciD[3].attributes["vrednostD"].value)
-              kolonaD.set(rKolonaD)
-              kolonaDent.config(state=DISABLED)
+                     if 'D' in rijeseneKolone:
+                            pass
+                     else:
+                            dugmeD1.config(state = DISABLED)
+                            D1.set(podaciD[0].attributes["vrednostD"].value)
+                            dugmeD1['bg'] = 'blue'
+                            dugmeD2.config(state = DISABLED)
+                            D2.set(podaciD[1].attributes["vrednostD"].value)
+                            dugmeD2['bg'] = 'blue'
+                            dugmeD3.config(state = DISABLED)
+                            D3.set(podaciD[2].attributes["vrednostD"].value)
+                            dugmeD3['bg'] = 'blue'
+                            dugmeD4.config(state = DISABLED)
+                            D4.set(podaciD[3].attributes["vrednostD"].value)
+                            dugmeD4['bg'] = 'blue'
+                            kolonaD.set(rKolonaD)
+                            kolonaDent.config(state=DISABLED)
+                            infoPanel("Bravo!! Pobjednik je PLAVI takmicar!")
+                            newGame()
+              if crveni['bg'] == 'yellow':
+                     if 'A' in rijeseneKolone:
+                            pass
+                     else:
+                            dugmeA1.config(state = DISABLED)
+                            A1.set(podaciA[0].attributes["vrednostA"].value)
+                            dugmeA1['bg'] = 'red'
+                            dugmeA2.config(state = DISABLED)
+                            A2.set(podaciA[1].attributes["vrednostA"].value)
+                            dugmeA2['bg'] = 'red'
+                            dugmeA3.config(state = DISABLED)
+                            A3.set(podaciA[2].attributes["vrednostA"].value)
+                            dugmeA3['bg'] = 'red'
+                            dugmeA4.config(state = DISABLED)
+                            A4.set(podaciA[3].attributes["vrednostA"].value)
+                            dugmeA4['bg'] = 'red'
+                            kolonaA.set(rKolonaA)
+                            kolonaAent.config(state=DISABLED)
+              
+                     if 'B' in rijeseneKolone:
+                            pass
+                     else:
+                            dugmeB1.config(state = DISABLED)
+                            B1.set(podaciB[0].attributes["vrednostB"].value)
+                            dugmeB1['bg'] = 'red'
+                            dugmeB2.config(state = DISABLED)
+                            B2.set(podaciB[1].attributes["vrednostB"].value)
+                            dugmeB2['bg'] = 'red'
+                            dugmeB3.config(state = DISABLED)
+                            B3.set(podaciB[2].attributes["vrednostB"].value)
+                            dugmeB3['bg'] = 'red'
+                            dugmeB4.config(state = DISABLED)
+                            B4.set(podaciB[3].attributes["vrednostB"].value)
+                            dugmeB4['bg'] = 'red'
+                            kolonaB.set(rKolonaB)
+                            kolonaBent.config(state=DISABLED)
+
+                     if 'C' in rijeseneKolone:
+                            pass
+                     else:
+                            dugmeC1.config(state = DISABLED)
+                            C1.set(podaciC[0].attributes["vrednostC"].value)
+                            dugmeC1['bg'] = 'red'
+                            dugmeC2.config(state = DISABLED)
+                            C2.set(podaciC[1].attributes["vrednostC"].value)
+                            dugmeC2['bg'] = 'red'
+                            dugmeC3.config(state = DISABLED)
+                            C3.set(podaciC[2].attributes["vrednostC"].value)
+                            dugmeC3['bg'] = 'red'
+                            dugmeC4.config(state = DISABLED)
+                            C4.set(podaciC[3].attributes["vrednostC"].value)
+                            dugmeC4['bg'] = 'red'
+                            kolonaC.set(rKolonaC)
+                            kolonaCent.config(state=DISABLED)
+
+                     if 'D' in rijeseneKolone:
+                            pass
+                     else:
+                            dugmeD1.config(state = DISABLED)
+                            D1.set(podaciD[0].attributes["vrednostD"].value)
+                            dugmeD1['bg'] = 'red'
+                            dugmeD2.config(state = DISABLED)
+                            D2.set(podaciD[1].attributes["vrednostD"].value)
+                            dugmeD2['bg'] = 'red'
+                            dugmeD3.config(state = DISABLED)
+                            D3.set(podaciD[2].attributes["vrednostD"].value)
+                            dugmeD3['bg'] = 'red'
+                            dugmeD4.config(state = DISABLED)
+                            D4.set(podaciD[3].attributes["vrednostD"].value)
+                            dugmeD4['bg'] = 'red'
+                            kolonaD.set(rKolonaD)
+                            kolonaDent.config(state=DISABLED)
+                            infoPanel("Bravo!! Pobjednik je CRVENI takmicar!")
+                            newGame()
+
+       elif rjesenjeEnt.get() != konacno:
+               
+               infoPanel('Odgovor netacan!')
+               if plavi['bg'] == 'yellow':
+                      crveni['bg'] = 'yellow'
+                      plavi['bg'] = 'blue'
+                      root.after_cancel(c)
+                      vrijeme(16)
+                      kolonaD.set("")
+                      root.focus_set()
+               else:
+                      plavi['bg'] = 'yellow'
+                      crveni['bg'] = 'red'
+                      root.after_cancel(c)
+                      vrijeme(16)
+                      kolonaD.set("")
+                      root.focus_set()      
 def odgovor(): # funkcija koja provjeri u kom je entriju kursor a zatim poziva funkciju tacanOdgovor za odredjenu kolonu vezanu za taj entry.. 
        global klik
        if klik == 1:
@@ -555,7 +731,7 @@ def odgovor(): # funkcija koja provjeri u kom je entriju kursor a zatim poziva f
               elif root.focus_get() != kolonaAent and root.focus_get() != kolonaBent and root.focus_get() != kolonaCent and root.focus_get() != kolonaDent and root.focus_get() != rjesenjeEnt:
                      return
        else:
-              infoPanel('Otvorite polje!!')
+              infoPanel('-->Otvorite polje!!')
               return
 
 #kolone A
@@ -632,7 +808,6 @@ kolonaCent.grid(column=0,row=5)
 kolonaCent.place(x=120, y=367)
 kolonaCent.bind("<Button-1>", brisiEntry)
 
-
 #kolone D
 
 dugmeD1 = tk.Button(root, textvariable = D1, command = lambda: state(dugmeD1),
@@ -672,11 +847,129 @@ crveni.place(x=470)
 brojac = tk.Label(root, width=5, font=RJ_FONT, relief=SUNKEN)
 brojac.place(x=350)
 #infoLabel
-
 infolabel=tk.Label(root,textvariable = info, font=BUTT_FONT, fg='yellow', bg='#002240')
 infolabel.grid(column=0, row=8,columnspan=1, sticky=(N, S, E, W))
-infolabel.place(x=330, y=450)
+infolabel.place(x=250, y=565)
+####################Pojedinacne funkcije za otvaranje random polja####################
+def otvA1():
+       if 'A1' in listaOtvPolja:
+              random.choice(listaFunkcija)()
+       else:
+              dugmeA1.config(state = DISABLED)
+              A1.set(podaciA[0].attributes["vrednostA"].value)
+              listaOtvPolja.append('A1')
+def otvA2():
+       if 'A2' in listaOtvPolja:
+              random.choice(listaFunkcija)()
+       else:
+              dugmeA2.config(state = DISABLED)
+              A2.set(podaciA[1].attributes["vrednostA"].value)
+              listaOtvPolja.append('A2')
+def otvA3():
+       if 'A3' in listaOtvPolja:
+              random.choice(listaFunkcija)()
+       else:
+              dugmeA3.config(state = DISABLED)
+              A3.set(podaciA[2].attributes["vrednostA"].value)
+              listaOtvPolja.append('A3')
+def otvA4():
+       if 'A4' in listaOtvPolja:
+              random.choice(listaFunkcija)()
+       else:
+              dugmeA4.config(state = DISABLED)
+              A4.set(podaciA[3].attributes["vrednostA"].value)
+              listaOtvPolja.append('A4')
+       
 
+
+def otvB1():
+       if 'B1' in listaOtvPolja:
+              random.choice(listaFunkcija)()
+       else:
+              dugmeB1.config(state = DISABLED)
+              B1.set(podaciB[0].attributes["vrednostB"].value)
+              listaOtvPolja.append('B1')
+def otvB2():
+       if 'B2' in listaOtvPolja:
+              random.choice(listaFunkcija)()
+       else:
+              dugmeB2.config(state = DISABLED)
+              B2.set(podaciB[1].attributes["vrednostB"].value)
+              listaOtvPolja.append('B2')
+def otvB3():
+       if 'B3' in listaOtvPolja:
+              random.choice(listaFunkcija)()
+       else:
+              dugmeB3.config(state = DISABLED)
+              B3.set(podaciB[2].attributes["vrednostB"].value)
+              listaOtvPolja.append('B3')
+def otvB4():
+       if 'B4' in listaOtvPolja:
+              random.choice(listaFunkcija)()
+       else:
+              dugmeB4.config(state = DISABLED)
+              B4.set(podaciB[3].attributes["vrednostB"].value)
+              listaOtvPolja.append('B4')
+
+def otvC1():
+       if 'C1' in listaOtvPolja:
+              random.choice(listaFunkcija)()
+       else:
+              dugmeC1.config(state = DISABLED)
+              C1.set(podaciC[0].attributes["vrednostC"].value)
+              listaOtvPolja.append('C1')
+def otvC2():
+       if 'C2' in listaOtvPolja:
+              random.choice(listaFunkcija)()
+       else:
+              dugmeC2.config(state = DISABLED)
+              C2.set(podaciC[1].attributes["vrednostC"].value)
+              listaOtvPolja.append('C2')
+def otvC3():
+       if 'C3' in listaOtvPolja:
+              random.choice(listaFunkcija)()
+       else:
+              dugmeC3.config(state = DISABLED)
+              C3.set(podaciC[2].attributes["vrednostC"].value)
+              listaOtvPolja.append('C3')
+def otvC4():
+       if 'C4' in listaOtvPolja:
+              random.choice(listaFunkcija)()
+       else:
+              dugmeC4.config(state = DISABLED)
+              C4.set(podaciC[3].attributes["vrednostC"].value)
+              listaOtvPolja.append('C4')
+
+def otvD1():
+       if 'D1' in listaOtvPolja:
+              random.choice(listaFunkcija)()
+       else:
+              dugmeD1.config(state = DISABLED)
+              D1.set(podaciD[0].attributes["vrednostD"].value)
+              listaOtvPolja.append('D1')
+def otvD2():
+       if 'D2' in listaOtvPolja:
+              random.choice(listaFunkcija)()
+       else:
+              dugmeD2.config(state = DISABLED)
+              D2.set(podaciD[1].attributes["vrednostD"].value)
+              listaOtvPolja.append('D2')
+def otvD3():
+       if 'D3' in listaOtvPolja:
+              random.choice(listaFunkcija)()
+       else:
+              dugmeD3.config(state = DISABLED)
+              D3.set(podaciD[2].attributes["vrednostD"].value)
+              listaOtvPolja.append('D3')
+def otvD4():
+       if 'D4' in listaOtvPolja:
+              random.choice(listaFunkcija)()
+       else:
+              dugmeD4.config(state = DISABLED)
+              D4.set(podaciD[3].attributes["vrednostD"].value)
+              listaOtvPolja.append('D4')
+global listaFunkcija
+listaFunkcija = [otvA1, otvA2, otvA3, otvA4, otvB1, otvB2, otvB3, otvB4, otvC1, otvC2, otvC3, otvC4, otvD1, otvD2, otvD3, otvD4]
 
 #root.bind("<Button-1>", setEntry)
 root.mainloop()
