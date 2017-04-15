@@ -1,8 +1,18 @@
 from tkinter import *
 from tkinter import ttk
+from tkinter import messagebox
+import random
 import tkinter as tk
-from xml.dom import minidom    # minidom je deo biblioteke XML za parsiranje
-e = minidom.parse("Asoc.xml")  # Povezvanje parsera sa Asoc.xml
+from xml.dom import minidom      # minidom je deo biblioteke XML za parsiranje
+
+#Lista Asocijacija
+lista=["Prva.xml","Druga.xml","Treca.xml","Cetvrta.xml","Peta.xml",
+       "Sesta.xml","Sedma.xml","Osma.xml","Deveta.xml","Deseta.xml",
+       "Jedanesta.xml","Dvanesta.xml","Trinesta.xml","Cetrnesta.xml","Petnesta.xml"]
+
+izbor=random.choice(lista) #Odabir jedne od Asocijacija iz liste
+
+e = minidom.parse("reci/"+izbor)  # Povezvanje parsera sa XML fajlom
 podaciA=e.getElementsByTagName("poljeA")   #Dohvatanje elemenata iz XML-a
 podaciB=e.getElementsByTagName("poljeB")
 podaciC=e.getElementsByTagName("poljeC")
@@ -207,13 +217,14 @@ kolonaDent = tk.Entry(root, textvariable = kolonaD, fg='#02A2F2', justify='cente
 kolonaDent.grid(column=1,row=5)
 kolonaDent.place(x=440, y=367)
 kolonaDent.bind("<Button-1>", brisiEntry)
+def pop(*args):
+    tk.messagebox.showinfo("PROČITAJ", "Prilikom upsivanja rešenja:\nPišite malim latiničnim slovima.\nKoristite slova sa kvačicama(š,đ,č,ć,ž).\nNeka rešenja se sastoje iz dve reči.")
 
-#slika
-slika=PhotoImage(file='sko.png')
-slika=slika.subsample(5,5)
-slikalabel=tk.Label(root,image=slika)
-slikalabel.grid(column=0, row=8,columnspan=1, sticky=(N, S, E, W))
-slikalabel.place(x=330, y=450)
+up = tk.Button(root, text = "Uputsvto", command= pop,bg='#02A2F2', fg='yellow', justify="center", width = 10, font = BUTT_FONT, state = NORMAL)
+up.grid(column=1, row=11, sticky='w')
+up.place(x=345, y=450)
+
+
 
 root.bind("<Button-1>", setEntry)
 root.mainloop()
