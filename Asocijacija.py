@@ -1,6 +1,7 @@
 from tkinter import *
 from tkinter import ttk
 import tkinter as tk
+
 import random
 import os
 from xml.dom import minidom    # minidom je deo biblioteke XML za parsiranje
@@ -83,6 +84,7 @@ pocni.place(x=50, y=80)
 root.configure(background='#002240')
 root.geometry('800x600+200+50')
 root.title('Igra Asocijacije')
+
 
 
 
@@ -291,6 +293,8 @@ def state(dugme):
               else:
                      infoPanel('-->Ponudite odgovor!!')
                      return
+
+
 
 
 def brisiEntry(event):
@@ -971,5 +975,4 @@ def otvD4():
 global listaFunkcija
 listaFunkcija = [otvA1, otvA2, otvA3, otvA4, otvB1, otvB2, otvB3, otvB4, otvC1, otvC2, otvC3, otvC4, otvD1, otvD2, otvD3, otvD4]
 
-#root.bind("<Button-1>", setEntry)
 root.mainloop()
