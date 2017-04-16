@@ -41,12 +41,12 @@ def vrijeme(count): # tajmer koji prebacuje zutu boju sa igraca na igraca
                      if klik == 0:
                             random.choice(listaFunkcija)()
                      else: klik = 0
-                     count = 5
+                     count = 21
                      
               c=root.after(1000, vrijeme, count-1)
 
 def start(): # start se poziva iz prozorcica koji sluzi da startuje tajmer i pokrene igru
-       vrijeme(5)
+       vrijeme(21)
        plavi['bg']= 'yellow'
        popUp.destroy()
        root.attributes("-topmost", True)
@@ -60,7 +60,7 @@ def reRun():
        
 def newGame():
        popUp = Toplevel()
-       popUp.geometry('300x200+375+180')
+       popUp.geometry('300x200+440+100')
        popUp.attributes("-topmost", True)
        popUp.title('Igra Asocijacije')
        popUp.configure(background='#002240')
@@ -77,7 +77,7 @@ def newGame():
 root = Tk()
 #toplevel se pokrece pri pokretanu programa.
 popUp = Toplevel()
-popUp.geometry('300x200+375+180')
+popUp.geometry('300x200+440+260')
 popUp.attributes("-topmost", True)
 popUp.title('Igra Asocijacije')
 popUp.configure(background='#002240')
@@ -721,7 +721,7 @@ def tacanOdgovorR():
                       vrijeme(16)
                       kolonaD.set("")
                       root.focus_set()      
-def odgovor(): # funkcija koja provjeri u kom je entriju kursor a zatim poziva funkciju tacanOdgovor za odredjenu kolonu vezanu za taj entry.. 
+def odgovor(*args): # funkcija koja provjeri u kom je entriju kursor a zatim poziva funkciju tacanOdgovor za odredjenu kolonu vezanu za taj entry.. 
        global klik
        if klik == 1:
               klik = 0
@@ -994,5 +994,5 @@ def otvD4():
 global listaFunkcija
 listaFunkcija = [otvA1, otvA2, otvA3, otvA4, otvB1, otvB2, otvB3, otvB4, otvC1, otvC2, otvC3, otvC4, otvD1, otvD2, otvD3, otvD4]
 
-#root.bind("<Button-1>", setEntry)
+root.bind("<Return>", odgovor)
 root.mainloop()
