@@ -26,20 +26,27 @@ c = None
 def vrijeme(count): # tajmer koji prebacuje zutu boju sa igraca na igraca
        global c
        global listaFunkcija
+       global klik
        brojac['text'] = count
        if count >= 0:
               if count == 0:
                      if plavi['bg']=='yellow':
                             plavi['bg']='blue'
                             crveni['bg']='yellow'
+                            
                      else:
                             crveni['bg']='red'
                             plavi['bg']='yellow'
-                     random.choice(listaFunkcija)()
-                     count = 21
+                            
+                     if klik == 0:
+                            random.choice(listaFunkcija)()
+                     else: klik = 0
+                     count = 5
+                     
               c=root.after(1000, vrijeme, count-1)
+
 def start(): # start se poziva iz prozorcica koji sluzi da startuje tajmer i pokrene igru
-       vrijeme(21)
+       vrijeme(5)
        plavi['bg']= 'yellow'
        popUp.destroy()
        root.attributes("-topmost", True)
@@ -858,6 +865,7 @@ def otvA1():
               dugmeA1.config(state = DISABLED)
               A1.set(podaciA[0].attributes["vrednostA"].value)
               listaOtvPolja.append('A1')
+              klik = 1
 def otvA2():
        if 'A2' in listaOtvPolja:
               random.choice(listaFunkcija)()
@@ -865,6 +873,7 @@ def otvA2():
               dugmeA2.config(state = DISABLED)
               A2.set(podaciA[1].attributes["vrednostA"].value)
               listaOtvPolja.append('A2')
+              klik = 1
 def otvA3():
        if 'A3' in listaOtvPolja:
               random.choice(listaFunkcija)()
@@ -872,6 +881,7 @@ def otvA3():
               dugmeA3.config(state = DISABLED)
               A3.set(podaciA[2].attributes["vrednostA"].value)
               listaOtvPolja.append('A3')
+              klik = 1
 def otvA4():
        if 'A4' in listaOtvPolja:
               random.choice(listaFunkcija)()
@@ -879,6 +889,7 @@ def otvA4():
               dugmeA4.config(state = DISABLED)
               A4.set(podaciA[3].attributes["vrednostA"].value)
               listaOtvPolja.append('A4')
+              klik = 1
        
 
 
@@ -889,6 +900,7 @@ def otvB1():
               dugmeB1.config(state = DISABLED)
               B1.set(podaciB[0].attributes["vrednostB"].value)
               listaOtvPolja.append('B1')
+              klik = 1
 def otvB2():
        if 'B2' in listaOtvPolja:
               random.choice(listaFunkcija)()
@@ -896,6 +908,7 @@ def otvB2():
               dugmeB2.config(state = DISABLED)
               B2.set(podaciB[1].attributes["vrednostB"].value)
               listaOtvPolja.append('B2')
+              klik = 1
 def otvB3():
        if 'B3' in listaOtvPolja:
               random.choice(listaFunkcija)()
@@ -903,6 +916,7 @@ def otvB3():
               dugmeB3.config(state = DISABLED)
               B3.set(podaciB[2].attributes["vrednostB"].value)
               listaOtvPolja.append('B3')
+              klik = 1
 def otvB4():
        if 'B4' in listaOtvPolja:
               random.choice(listaFunkcija)()
@@ -910,6 +924,7 @@ def otvB4():
               dugmeB4.config(state = DISABLED)
               B4.set(podaciB[3].attributes["vrednostB"].value)
               listaOtvPolja.append('B4')
+              klik = 1
 
 def otvC1():
        if 'C1' in listaOtvPolja:
@@ -918,6 +933,7 @@ def otvC1():
               dugmeC1.config(state = DISABLED)
               C1.set(podaciC[0].attributes["vrednostC"].value)
               listaOtvPolja.append('C1')
+              klik = 1
 def otvC2():
        if 'C2' in listaOtvPolja:
               random.choice(listaFunkcija)()
@@ -925,6 +941,7 @@ def otvC2():
               dugmeC2.config(state = DISABLED)
               C2.set(podaciC[1].attributes["vrednostC"].value)
               listaOtvPolja.append('C2')
+              klik = 1
 def otvC3():
        if 'C3' in listaOtvPolja:
               random.choice(listaFunkcija)()
@@ -932,6 +949,7 @@ def otvC3():
               dugmeC3.config(state = DISABLED)
               C3.set(podaciC[2].attributes["vrednostC"].value)
               listaOtvPolja.append('C3')
+              klik = 1
 def otvC4():
        if 'C4' in listaOtvPolja:
               random.choice(listaFunkcija)()
@@ -939,6 +957,7 @@ def otvC4():
               dugmeC4.config(state = DISABLED)
               C4.set(podaciC[3].attributes["vrednostC"].value)
               listaOtvPolja.append('C4')
+              klik = 1
 
 def otvD1():
        if 'D1' in listaOtvPolja:
@@ -947,6 +966,7 @@ def otvD1():
               dugmeD1.config(state = DISABLED)
               D1.set(podaciD[0].attributes["vrednostD"].value)
               listaOtvPolja.append('D1')
+              klik = 1
 def otvD2():
        if 'D2' in listaOtvPolja:
               random.choice(listaFunkcija)()
@@ -954,6 +974,7 @@ def otvD2():
               dugmeD2.config(state = DISABLED)
               D2.set(podaciD[1].attributes["vrednostD"].value)
               listaOtvPolja.append('D2')
+              klik = 1
 def otvD3():
        if 'D3' in listaOtvPolja:
               random.choice(listaFunkcija)()
@@ -961,6 +982,7 @@ def otvD3():
               dugmeD3.config(state = DISABLED)
               D3.set(podaciD[2].attributes["vrednostD"].value)
               listaOtvPolja.append('D3')
+              klik = 1
 def otvD4():
        if 'D4' in listaOtvPolja:
               random.choice(listaFunkcija)()
@@ -968,6 +990,7 @@ def otvD4():
               dugmeD4.config(state = DISABLED)
               D4.set(podaciD[3].attributes["vrednostD"].value)
               listaOtvPolja.append('D4')
+              klik = 1
 global listaFunkcija
 listaFunkcija = [otvA1, otvA2, otvA3, otvA4, otvB1, otvB2, otvB3, otvB4, otvC1, otvC2, otvC3, otvC4, otvD1, otvD2, otvD3, otvD4]
 
