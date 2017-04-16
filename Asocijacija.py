@@ -21,6 +21,7 @@ TOP_FONT = ('Consolas', 13)
 BUTT_FONT = ('Consolas', 14, 'bold')
 ENT_FONT = ('Consolas', 17, 'bold')
 RJ_FONT = ('Consolas', 25, 'bold')
+IN_FONT = ('Consolas', 20)
 klik = 0   # klik sluzi za sprjecavanje otvaranja vise polja odjednom i unosenja odgovora prije nego se otvori polje
 c = None
 def vrijeme(count): # tajmer koji prebacuje zutu boju sa igraca na igraca
@@ -81,9 +82,9 @@ popUp.geometry('300x200+440+260')
 popUp.attributes("-topmost", True)
 popUp.title('Igra Asocijacije')
 popUp.configure(background='#002240')
-obavjestenje = tk.Label(popUp, text='--Igra asocijacije--',
+obavjestenje = tk.Label(popUp, text='"Dobro vece!"\n-Milka Canic-',
                         font=TOP_FONT, bg='#002240', fg='yellow')
-obavjestenje.place(x=60)
+obavjestenje.place(x=80)
 pocni = tk.Button(popUp, text='Pocni igru', width=15, font=ENT_FONT, bg="#02A2F2", fg="yellow", command=start)
 pocni.place(x=50, y=80)
 
@@ -146,7 +147,7 @@ D4.set('D4')
 #funkcija koja setuje labelu koja daje informacije i uputstva tokom igre.. pojavljuje se 2 sekunde i onda nestane
 def infoPanel(str):
        info.set(str)
-       root.after(2000, clear)
+       root.after(2500, clear)
 def clear():
        info.set("")
 
@@ -161,7 +162,7 @@ def state(dugme):
                      klik += 1
                      listaOtvPolja.append('A1')
               else:
-                     infoPanel('-->Ponudite odgovor!!')
+                     infoPanel('Ponudite odgovor!!')
                      return
        elif dugme == dugmeA2:
               if klik == 0:
@@ -170,7 +171,7 @@ def state(dugme):
                      klik += 1
                      listaOtvPolja.append('A2')
               else:
-                     infoPanel('-->Ponudite odgovor!!')
+                     infoPanel('Ponudite odgovor!!')
                      return
        elif dugme == dugmeA3:
               if klik == 0:
@@ -179,7 +180,7 @@ def state(dugme):
                      klik += 1
                      listaOtvPolja.append('A3')
               else:
-                     infoPanel('-->Ponudite odgovor!!')
+                     infoPanel('Ponudite odgovor!!')
                      return
        elif dugme == dugmeA4:
               if klik == 0:
@@ -188,7 +189,7 @@ def state(dugme):
                      klik += 1
                      listaOtvPolja.append('A4')
               else:
-                     infoPanel('-->Ponudite odgovor!!')
+                     infoPanel('Ponudite odgovor!!')
                      return
        elif dugme == dugmeB1:
               if klik == 0:
@@ -197,7 +198,7 @@ def state(dugme):
                      klik += 1
                      listaOtvPolja.append('B1')
               else:
-                     infoPanel('-->Ponudite odgovor!!')
+                     infoPanel('Ponudite odgovor!!')
                      return
        elif dugme == dugmeB2:
               if klik == 0:
@@ -206,7 +207,7 @@ def state(dugme):
                      klik += 1
                      listaOtvPolja.append('B2')
               else:
-                     infoPanel('-->Ponudite odgovor!!')
+                     infoPanel('Ponudite odgovor!!')
                      return
        elif dugme == dugmeB3:
               if klik == 0:
@@ -215,7 +216,7 @@ def state(dugme):
                      klik += 1
                      listaOtvPolja.append('B3')
               else:
-                     infoPanel('-->Ponudite odgovor!!')
+                     infoPanel('Ponudite odgovor!!')
                      return
        elif dugme == dugmeB4:
               if klik == 0:
@@ -224,7 +225,7 @@ def state(dugme):
                      klik += 1
                      listaOtvPolja.append('B4')
               else:
-                     infoPanel('-->Ponudite odgovor!!')
+                     infoPanel('Ponudite odgovor!!')
                      return
        elif dugme == dugmeC1:
               if klik == 0:
@@ -233,7 +234,7 @@ def state(dugme):
                      klik += 1
                      listaOtvPolja.append('C1')
               else:
-                     infoPanel('-->Ponudite odgovor!!')
+                     infoPanel('Ponudite odgovor!!')
                      return
        elif dugme == dugmeC2:
               if klik == 0:
@@ -242,7 +243,7 @@ def state(dugme):
                      klik += 1
                      listaOtvPolja.append('C2')
               else:
-                     infoPanel('-->Ponudite odgovor!!')
+                     infoPanel('Ponudite odgovor!!')
                      return
        elif dugme == dugmeC3:
               if klik == 0:
@@ -251,7 +252,7 @@ def state(dugme):
                      klik += 1
                      listaOtvPolja.append('C3')
               else:
-                     infoPanel('-->Ponudite odgovor!!')
+                     infoPanel('Ponudite odgovor!!')
                      return
        elif dugme == dugmeC4:
               if klik == 0:
@@ -260,7 +261,7 @@ def state(dugme):
                      klik += 1
                      listaOtvPolja.append('C4')
               else:
-                     infoPanel('-->Ponudite odgovor!!')
+                     infoPanel('Ponudite odgovor!!')
                      return
        elif dugme == dugmeD1:
               if klik == 0:
@@ -269,7 +270,7 @@ def state(dugme):
                      klik += 1
                      listaOtvPolja.append('D1')
               else:
-                     infoPanel('-->Ponudite odgovor!!')
+                     infoPanel('Ponudite odgovor!!')
                      return
        elif dugme == dugmeD2:
               if klik == 0:
@@ -278,7 +279,7 @@ def state(dugme):
                      klik += 1
                      listaOtvPolja.append('D2')
               else:
-                     infoPanel('-->Ponudite odgovor!!')
+                     infoPanel('Ponudite odgovor!!')
                      return
        elif dugme == dugmeD3:
               if klik == 0:
@@ -287,7 +288,7 @@ def state(dugme):
                      klik += 1
                      listaOtvPolja.append('D3')
               else:
-                     infoPanel('-->Ponudite odgovor!!')
+                     infoPanel('Ponudite odgovor!!')
                      return
        elif dugme == dugmeD4:
               if klik == 0:
@@ -296,7 +297,7 @@ def state(dugme):
                      klik += 1
                      listaOtvPolja.append('D4')
               else:
-                     infoPanel('-->Ponudite odgovor!!')
+                     infoPanel('Ponudite odgovor!!')
                      return
 
 
@@ -320,7 +321,7 @@ def tacanOdgovorA():
        global klik   
        root.after_cancel(c)
        vrijeme(21)
-       if kolonaA.get() == rKolonaA:
+       if kolonaA.get().lower() == rKolonaA.lower():
               klik=1
               rijeseneKolone.append("A")
               if plavi['bg'] == 'yellow':
@@ -337,7 +338,7 @@ def tacanOdgovorA():
                      A4.set(podaciA[3].attributes["vrednostA"].value)
                      dugmeA4["bg"] = "blue"
                      kolonaAent.config(state=DISABLED)
-                     kolonaA.set("*{}*".format(rKolonaA))
+                     kolonaA.set("{}".format(rKolonaA))
               elif crveni['bg'] == 'yellow':
                      dugmeA1.config(state = DISABLED)
                      A1.set(podaciA[0].attributes["vrednostA"].value)
@@ -354,11 +355,11 @@ def tacanOdgovorA():
                      kolonaAent.config(state=DISABLED)
                      kolonaA.set("{}".format(rKolonaA))
        elif kolonaA.get() == '':
-              infoPanel('-->Unesite odgovor!!')
+              infoPanel('Unesite odgovor!!')
               klik = 1
               return
        elif kolonaA.get() != rKolonaA:
-              infoPanel('-->Odgovor netacan!')
+              infoPanel('Odgovor netacan!')
               if plavi['bg'] == 'yellow':
                      crveni['bg'] = 'yellow'
                      plavi['bg'] = 'blue'
@@ -379,7 +380,7 @@ def tacanOdgovorB():
        global klik
        root.after_cancel(c)
        vrijeme(21)                     
-       if kolonaB.get() == rKolonaB:
+       if kolonaB.get().lower() == rKolonaB.lower():
               klik=1
               rijeseneKolone.append("B")
               if plavi['bg'] == 'yellow':
@@ -413,11 +414,11 @@ def tacanOdgovorB():
                      kolonaBent.config(state=DISABLED)
                      kolonaB.set("*{}*".format(rKolonaB))
        elif kolonaB.get() == '':
-              infoPanel('-->Unesite odgovor!!')
+              infoPanel('Unesite odgovor!!')
               klik = 1
               return
        elif kolonaB.get() != rKolonaB:
-              infoPanel('-->Odgovor netacan!')
+              infoPanel('Odgovor netacan!')
               if plavi['bg'] == 'yellow':
                      crveni['bg'] = 'yellow'
                      plavi['bg'] = 'blue'
@@ -438,7 +439,7 @@ def tacanOdgovorC():
        global klik
        root.after_cancel(c)
        vrijeme(21)                     
-       if kolonaC.get() == rKolonaC:
+       if kolonaC.get().lower() == rKolonaC.lower():
               klik=1
               if plavi['bg'] == 'yellow':
                      dugmeC1.config(state = DISABLED)
@@ -471,11 +472,11 @@ def tacanOdgovorC():
                      kolonaCent.config(state=DISABLED)
                      kolonaC.set("*{}*".format(rKolonaC))
        elif kolonaC.get() == '':
-              infoPanel('-->Unesite odgovor!!')
+              infoPanel('Unesite odgovor!!')
               klik = 1
               return
        elif kolonaC.get() != rKolonaC:
-              infoPanel('-->Odgovor netacan!')
+              infoPanel('Odgovor netacan!')
               if plavi['bg'] == 'yellow':
                      crveni['bg'] = 'yellow'
                      plavi['bg'] = 'blue'
@@ -496,7 +497,7 @@ def tacanOdgovorD():
        global klik
        root.after_cancel(c)
        vrijeme(21)                     
-       if kolonaD.get() == rKolonaD:
+       if kolonaD.get().lower() == rKolonaD.lower():
               klik=1
               if plavi['bg'] == 'yellow':
                      dugmeD1.config(state = DISABLED)
@@ -529,12 +530,12 @@ def tacanOdgovorD():
                      kolonaDent.config(state=DISABLED)
                      kolonaD.set("*{}*".format(rKolonaB))
        elif kolonaD.get() == '':
-              infoPanel('-->Unesite odgovor!!')
+              infoPanel('Unesite odgovor!!')
               klik = 1
               return
        
        elif kolonaD.get() != rKolonaD:
-              infoPanel('-->Odgovor netacan!')
+              infoPanel('Odgovor netacan!')
               if plavi['bg'] == 'yellow':
                      crveni['bg'] = 'yellow'
                      plavi['bg'] = 'blue'
@@ -554,7 +555,7 @@ def tacanOdgovorR():
        brojac['text'] ='00'
        global c
        root.after_cancel(c)
-       if rjesenjeEnt.get() == konacno:
+       if rjesenjeEnt.get().lower() == konacno.lower():
               if plavi['bg'] == 'yellow':
                      if 'A' in rijeseneKolone:
                             pass
@@ -627,7 +628,7 @@ def tacanOdgovorR():
                             dugmeD4['bg'] = 'blue'
                             kolonaD.set(rKolonaD)
                             kolonaDent.config(state=DISABLED)
-                            infoPanel("Bravo!! Pobjednik je PLAVI takmicar!")
+                            infoPanel("Pobjednik je PLAVI!")
                             newGame()
               if crveni['bg'] == 'yellow':
                      if 'A' in rijeseneKolone:
@@ -701,7 +702,7 @@ def tacanOdgovorR():
                             dugmeD4['bg'] = 'red'
                             kolonaD.set(rKolonaD)
                             kolonaDent.config(state=DISABLED)
-                            infoPanel("Bravo!! Pobjednik je CRVENI takmicar!")
+                            infoPanel("Pobjednik je CRVENI!")
                             newGame()
 
        elif rjesenjeEnt.get() != konacno:
@@ -738,7 +739,7 @@ def odgovor(*args): # funkcija koja provjeri u kom je entriju kursor a zatim poz
               elif root.focus_get() != kolonaAent and root.focus_get() != kolonaBent and root.focus_get() != kolonaCent and root.focus_get() != kolonaDent and root.focus_get() != rjesenjeEnt:
                      return
        else:
-              infoPanel('-->Otvorite polje!!')
+              infoPanel('Otvorite polje!!')
               return
 
 #kolone A
@@ -854,9 +855,9 @@ crveni.place(x=470)
 brojac = tk.Label(root, width=5, font=RJ_FONT, relief=SUNKEN)
 brojac.place(x=350)
 #infoLabel
-infolabel=tk.Label(root,textvariable = info, font=BUTT_FONT, fg='yellow', bg='#002240')
+infolabel=tk.Label(root,textvariable = info, font=IN_FONT, fg='yellow', bg='#002240')
 infolabel.grid(column=0, row=8,columnspan=1, sticky=(N, S, E, W))
-infolabel.place(x=250, y=565)
+infolabel.place(x=300, y=565)
 ####################Pojedinacne funkcije za otvaranje random polja####################
 def otvA1():
        if 'A1' in listaOtvPolja:
