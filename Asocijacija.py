@@ -97,7 +97,7 @@ root.title('Igra Asocijacije')
 
 info = StringVar()
 rjesenje = StringVar()
-rjesenje.set('*rjesenje*')
+
 #VARIJABLE A             #kada se program pokrene varijable se setuju na imena polja
 kolonaA = StringVar()
 #kolonaA.set('***A***')
@@ -364,14 +364,14 @@ def tacanOdgovorA():
                      crveni['bg'] = 'yellow'
                      plavi['bg'] = 'blue'
                      root.after_cancel(c)
-                     vrijeme(16)
+                     vrijeme(21)
                      kolonaA.set("")
                      root.focus_set()
               elif crveni['bg'] == 'yellow':
                      plavi['bg'] = 'yellow'
                      crveni['bg'] = 'red'
                      root.after_cancel(c)
-                     vrijeme(16)
+                     vrijeme(21)
                      kolonaA.set("")
                      root.focus_set()
 def tacanOdgovorB():
@@ -397,7 +397,7 @@ def tacanOdgovorB():
                      B4.set(podaciB[3].attributes["vrednostB"].value)
                      dugmeB4["bg"] = "blue"
                      kolonaBent.config(state=DISABLED)
-                     kolonaB.set("*{}*".format(rKolonaB))
+                     kolonaB.set("{}".format(rKolonaB))
               elif crveni['bg']== 'yellow':
                      dugmeB1.config(state = DISABLED)
                      B1.set(podaciB[0].attributes["vrednostB"].value)
@@ -412,7 +412,7 @@ def tacanOdgovorB():
                      B4.set(podaciB[3].attributes["vrednostB"].value)
                      dugmeB4["bg"] = "red"
                      kolonaBent.config(state=DISABLED)
-                     kolonaB.set("*{}*".format(rKolonaB))
+                     kolonaB.set("{}".format(rKolonaB))
        elif kolonaB.get() == '':
               infoPanel('Unesite odgovor!!')
               klik = 1
@@ -423,14 +423,14 @@ def tacanOdgovorB():
                      crveni['bg'] = 'yellow'
                      plavi['bg'] = 'blue'
                      root.after_cancel(c)
-                     vrijeme(16)
+                     vrijeme(21)
                      kolonaB.set("")
                      root.focus_set()
               else:
                      plavi['bg'] = 'yellow'
                      crveni['bg'] = 'red'
                      root.after_cancel(c)
-                     vrijeme(16)
+                     vrijeme(21)
                      kolonaB.set("")
                      root.focus_set()
 def tacanOdgovorC():
@@ -455,7 +455,7 @@ def tacanOdgovorC():
                      C4.set(podaciC[3].attributes["vrednostC"].value)
                      dugmeC4["bg"] = "blue"
                      kolonaCent.config(state=DISABLED)
-                     kolonaC.set("*{}*".format(rKolonaC))
+                     kolonaC.set("{}".format(rKolonaC))
               elif crveni['bg']== 'yellow':
                      dugmeC1.config(state = DISABLED)
                      C1.set(podaciC[0].attributes["vrednostC"].value)
@@ -470,7 +470,7 @@ def tacanOdgovorC():
                      C4.set(podaciC[3].attributes["vrednostC"].value)
                      dugmeC4["bg"] = "red"
                      kolonaCent.config(state=DISABLED)
-                     kolonaC.set("*{}*".format(rKolonaC))
+                     kolonaC.set("{}".format(rKolonaC))
        elif kolonaC.get() == '':
               infoPanel('Unesite odgovor!!')
               klik = 1
@@ -481,14 +481,14 @@ def tacanOdgovorC():
                      crveni['bg'] = 'yellow'
                      plavi['bg'] = 'blue'
                      root.after_cancel(c)
-                     vrijeme(16)
+                     vrijeme(21)
                      kolonaC.set("")
                      root.focus_set()
               else:
                      plavi['bg'] = 'yellow'
                      crveni['bg'] = 'red'
                      root.after_cancel(c)
-                     vrijeme(16)
+                     vrijeme(21)
                      kolonaC.set("")
                      root.focus_set()                     
 def tacanOdgovorD():
@@ -513,7 +513,7 @@ def tacanOdgovorD():
                      D4.set(podaciD[3].attributes["vrednostD"].value)
                      dugmeD4["bg"] = "blue"
                      kolonaDent.config(state=DISABLED)
-                     kolonaD.set("*{}*".format(rKolonaD))
+                     kolonaD.set("{}".format(rKolonaD))
               elif crveni['bg']== 'yellow':
                      dugmeD1.config(state = DISABLED)
                      D1.set(podaciD[0].attributes["vrednostD"].value)
@@ -528,7 +528,7 @@ def tacanOdgovorD():
                      D4.set(podaciD[3].attributes["vrednostD"].value)
                      dugmeD4["bg"] = "red"
                      kolonaDent.config(state=DISABLED)
-                     kolonaD.set("*{}*".format(rKolonaB))
+                     kolonaD.set("{}".format(rKolonaB))
        elif kolonaD.get() == '':
               infoPanel('Unesite odgovor!!')
               klik = 1
@@ -540,14 +540,14 @@ def tacanOdgovorD():
                      crveni['bg'] = 'yellow'
                      plavi['bg'] = 'blue'
                      root.after_cancel(c)
-                     vrijeme(16)
+                     vrijeme(21)
                      kolonaD.set("")
                      root.focus_set()
               else:
                      plavi['bg'] = 'yellow'
                      crveni['bg'] = 'red'
                      root.after_cancel(c)
-                     vrijeme(16)
+                     vrijeme(21)
                      kolonaD.set("")
                      root.focus_set()
        
@@ -704,7 +704,7 @@ def tacanOdgovorR():
                             kolonaDent.config(state=DISABLED)
                             infoPanel("Pobjednik je CRVENI!")
                             newGame()
-
+              rjesenjeEnt.config(state = DISABLED)
        elif rjesenjeEnt.get() != konacno:
                
                infoPanel('Odgovor netacan!')
@@ -712,14 +712,14 @@ def tacanOdgovorR():
                       crveni['bg'] = 'yellow'
                       plavi['bg'] = 'blue'
                       root.after_cancel(c)
-                      vrijeme(16)
+                      vrijeme(21)
                       kolonaD.set("")
                       root.focus_set()
                else:
                       plavi['bg'] = 'yellow'
                       crveni['bg'] = 'red'
                       root.after_cancel(c)
-                      vrijeme(16)
+                      vrijeme(21)
                       kolonaD.set("")
                       root.focus_set()      
 def odgovor(*args): # funkcija koja provjeri u kom je entriju kursor a zatim poziva funkciju tacanOdgovor za odredjenu kolonu vezanu za taj entry.. 
@@ -741,7 +741,26 @@ def odgovor(*args): # funkcija koja provjeri u kom je entriju kursor a zatim poz
        else:
               infoPanel('Otvorite polje!!')
               return
-
+def dalje():
+       global klik
+       if klik == 0:
+              infoPanel('Otvorite polje!!')
+              return
+       if plavi['bg'] == 'yellow':
+              crveni['bg'] = 'yellow'
+              plavi['bg'] = 'blue'
+              root.after_cancel(c)
+              vrijeme(21)
+              kolonaD.set("")
+              root.focus_set()
+       else:
+              plavi['bg'] = 'yellow'
+              crveni['bg'] = 'red'
+              root.after_cancel(c)
+              vrijeme(21)
+              kolonaD.set("")
+              root.focus_set()
+       klik = 0
 #kolone A
 
 dugmeA1 = tk.Button(root, textvariable = A1, command = lambda: state(dugmeA1),
@@ -842,7 +861,7 @@ kolonaDent.bind("<Button-1>", brisiEntry)
 sijalica = PhotoImage(file='sijalica.png')
 sijalica = sijalica.subsample(10)
 #dugme
-potvrdi = tk.Button(root, text="Potvrdi", font = BUTT_FONT, bg='#02A2F2', fg='yellow',  command = odgovor)
+potvrdi = tk.Button(root, text="Potvrdi", font = BUTT_FONT, bg='#02A2F2', fg='yellow', width=8, command = odgovor)
 potvrdi.grid(column=1, row=5)
 potvrdi.place(x=700, y=283)
 plavi = tk.Button(root, image = sijalica, bg='blue')
@@ -851,6 +870,8 @@ plavi.place(x=250)
 crveni = tk.Button(root, image = sijalica, bg='red')
 crveni.grid(column=1, row=0)
 crveni.place(x=470)
+dalje = tk.Button(root, text="Dalje", font=BUTT_FONT, bg='#02A2F2', fg='yellow', width=8, command = dalje)
+dalje.place(x=17, y=283)
 # brojac
 brojac = tk.Label(root, width=5, font=RJ_FONT, relief=SUNKEN)
 brojac.place(x=350)
