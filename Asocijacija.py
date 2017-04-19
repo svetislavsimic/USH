@@ -8,7 +8,9 @@ from xml.dom import minidom      # minidom je deo biblioteke XML za parsiranje
 #Lista Asocijacija
 lista=["Prva.xml","Druga.xml","Treca.xml","Cetvrta.xml","Peta.xml",
        "Sesta.xml","Sedma.xml","Osma.xml","Deveta.xml","Deseta.xml",
-       "Jedanesta.xml","Dvanesta.xml","Trinesta.xml","Cetrnesta.xml","Petnesta.xml"]
+       "Jedanesta.xml","Dvanesta.xml","Trinesta.xml","Cetrnesta.xml","Petnesta.xml",
+       "Sesnesta.xml","Sedamnesta.xml","Osamnesta.xml","Devetnesta.xml","Dvadeseta.xml",
+       "Dvadesetprva.xml","Dvadesetdruga.xml","Dvadesettreca.xml" ]
 
 izbor=random.choice(lista) #Odabir jedne od Asocijacija iz liste
 
