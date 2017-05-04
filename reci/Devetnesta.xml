@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Asocijacija>
+    <kolonaA>
+        <poljeA vrednostA="čizma"></poljeA>
+        <poljeA vrednostA="tajna"></poljeA>
+        <poljeA vrednostA="spas"></poljeA>
+        <poljeA vrednostA="oficir"></poljeA>
+        <poljeA vrednostA="vojska"></poljeA>
+    </kolonaA>
+    <kolonaB>
+        <poljeB vrednostB="sjaj"></poljeB>
+        <poljeB vrednostB="epoleta"></poljeB>
+        <poljeB vrednostB="hotel"/> <!-- Završni tag može da se stavi a i nemora radiće u oba slučaja-->
+        <poljeB vrednostB="petica"></poljeB>
+        <poljeB vrednostB="zvezda"></poljeB>
+    </kolonaB>
+    <kolonaC>
+        <poljeC vrednostC="delo"></poljeC>
+        <poljeC vrednostC="rasplet"></poljeC>
+        <poljeC vrednostC="pozorište"></poljeC>
+        <poljeC vrednostC="tragedija"/>
+        <poljeC vrednostC="drama"></poljeC>
+    </kolonaC>
+    <kolonaD>
+        <poljeD vrednostD="kafa"></poljeD>
+        <poljeD vrednostD="ručak"></poljeD>
+        <poljeD vrednostD="zastoj"></poljeD>
+        <poljeD vrednostD="odmor"></poljeD>
+        <poljeD vrednostD="pauza"/>
+    </kolonaD>
+    <Konacno vrednostK="čin"/>
+</Asocijacija>
+
+        <!--Ovo je XML fajl sa podacima (rečima) koje se koriste u aplikaciji -->

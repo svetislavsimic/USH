@@ -1,12 +1,22 @@
 from tkinter import *
 from tkinter import ttk
-import tkinter as tk
-
+from tkinter import messagebox
 import random
+import tkinter as tk
 import os
+from xml.dom import minidom      # minidom je deo biblioteke XML za parsiranje
 
-from xml.dom import minidom    # minidom je deo biblioteke XML za parsiranje
-e = minidom.parse("Asoc.xml")  # Povezvanje parsera sa Asoc.xml
+#Lista Asocijacija
+lista=["Prva.xml","Druga.xml","Treca.xml","Cetvrta.xml","Peta.xml",
+       "Sesta.xml","Sedma.xml","Osma.xml","Deveta.xml","Deseta.xml",
+       "Jedanesta.xml","Dvanesta.xml","Trinesta.xml","Cetrnesta.xml","Petnesta.xml",
+       "Sesnesta.xml","Sedamnesta.xml","Osamnesta.xml","Devetnesta.xml","Dvadeseta.xml",
+       "Dvadesetprva.xml","Dvadesetdruga.xml","Dvadesettreca.xml" ]
+
+izbor=random.choice(lista) #Odabir jedne od Asocijacija iz liste
+
+e = minidom.parse("reci/"+izbor)  # Povezvanje parsera sa XML fajlom
+
 podaciA=e.getElementsByTagName("poljeA")   #Dohvatanje elemenata iz XML-a
 podaciB=e.getElementsByTagName("poljeB")
 podaciC=e.getElementsByTagName("poljeC")
@@ -861,6 +871,16 @@ kolonaDent = tk.Entry(root, textvariable = kolonaD, fg='#02A2F2', justify='cente
 kolonaDent.grid(column=1,row=5)
 kolonaDent.place(x=440, y=367)
 kolonaDent.bind("<Button-1>", brisiEntry)
+
+def pop(*args):
+    tk.messagebox.showinfo("PROČITAJ", "Prilikom upsivanja rešenja:\nPišite malim latiničnim slovima.\nKoristite slova sa kvačicama(š,đ,č,ć,ž).\nNeka rešenja se sastoje iz dve reči.")
+
+up = tk.Button(root, text = "Uputsvto", command= pop,bg='#02A2F2', fg='yellow', justify="center", width = 10, font = BUTT_FONT, state = NORMAL)
+up.grid(column=1, row=11, sticky='w')
+up.place(x=345, y=450)
+
+
+
 #sijalica slika
 sijalica = PhotoImage(file='sijalica.png')
 sijalica = sijalica.subsample(10)
@@ -937,8 +957,7 @@ def otvB2():
               klik = 1
 def otvB3():
        if 'B3' in listaOtvPolja:
-              random.choice(listaFunkcija)()
-       else:
+              random.choice(listaFunkcija)()       else:
               dugmeB3.config(state = DISABLED)
               B3.set(podaciB[2].attributes["vrednostB"].value)
               listaOtvPolja.append('B3')
@@ -948,8 +967,7 @@ def otvB4():
               random.choice(listaFunkcija)()
        else:
               dugmeB4.config(state = DISABLED)
-              B4.set(podaciB[3].attributes["vrednostB"].value)
-              listaOtvPolja.append('B4')
+              B4.set(podaciB[3].attributes["vrednostB"].value)              listaOtvPolja.append('B4')
               klik = 1
 
 def otvC1():
@@ -959,8 +977,7 @@ def otvC1():
               dugmeC1.config(state = DISABLED)
               C1.set(podaciC[0].attributes["vrednostC"].value)
               listaOtvPolja.append('C1')
-              klik = 1
-def otvC2():
+              klik = 1def otvC2():
        if 'C2' in listaOtvPolja:
               random.choice(listaFunkcija)()
        else:
@@ -1022,5 +1039,6 @@ listaFunkcija = [otvA1, otvA2, otvA3, otvA4, otvB1, otvB2, otvB3, otvB4, otvC1, 
 
 
 root.bind("<Return>", odgovor)
+
 
 root.mainloop()

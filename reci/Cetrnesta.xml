@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Asocijacija>
+    <kolonaA>
+        <poljeA vrednostA="internet"></poljeA>
+        <poljeA vrednostA="ništa"></poljeA>
+        <poljeA vrednostA="posao"></poljeA>
+        <poljeA vrednostA="hleb"></poljeA>
+        <poljeA vrednostA="nema"></poljeA>
+    </kolonaA>
+    <kolonaB>
+        <poljeB vrednostB="čekovi"></poljeB>
+        <poljeB vrednostB="šporet"></poljeB>
+        <poljeB vrednostB="minus"/> <!-- Završni tag može da se stavi a i nemora radiće u oba slučaja-->
+        <poljeB vrednostB="rata"></poljeB>
+        <poljeB vrednostB="kredit"></poljeB>
+    </kolonaB>
+    <kolonaC>
+        <poljeC vrednostC="redovna"></poljeC>
+        <poljeC vrednostC="kasni"></poljeC>
+        <poljeC vrednostC="žena"></poljeC>
+        <poljeC vrednostC="mala"/>
+        <poljeC vrednostC="plata"></poljeC>
+    </kolonaC>
+    <kolonaD>
+        <poljeD vrednostD="razvod"></poljeD>
+        <poljeD vrednostD="voda"></poljeD>
+        <poljeD vrednostD="struja"></poljeD>
+        <poljeD vrednostD="fiskalni"></poljeD>
+        <poljeD vrednostD="račun"/>
+    </kolonaD>
+    <Konacno vrednostK="pare"/>
+</Asocijacija>
+
+        <!--Ovo je XML fajl sa podacima (rečima) koje se koriste u aplikaciji -->

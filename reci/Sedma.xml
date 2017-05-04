@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Asocijacija>
+    <kolonaA>
+        <poljeA vrednostA="kralj"></poljeA>
+        <poljeA vrednostA="žena"></poljeA>
+        <poljeA vrednostA="figura"></poljeA>
+        <poljeA vrednostA="ključ"></poljeA>
+        <poljeA vrednostA="simbol"></poljeA>
+    </kolonaA>
+    <kolonaB>
+        <poljeB vrednostB="bolonja"></poljeB>
+        <poljeB vrednostB="sud"></poljeB>
+        <poljeB vrednostB="kafka"/> <!-- Završni tag može da se stavi a i nemora radiće u oba slučaja-->
+        <poljeB vrednostB="nirnberg"></poljeB>
+        <poljeB vrednostB="proces"></poljeB>
+    </kolonaB>
+    <kolonaC>
+        <poljeC vrednostC="članovi"></poljeC>
+        <poljeC vrednostC="rečenica"></poljeC>
+        <poljeC vrednostC="značenje"></poljeC>
+        <poljeC vrednostC="misao"/>
+        <poljeC vrednostC="sastav"></poljeC>
+    </kolonaC>
+    <kolonaD>
+        <poljeD vrednostD="voda"></poljeD>
+        <poljeD vrednostD="vatra"></poljeD>
+        <poljeD vrednostD="zemlja"></poljeD>
+        <poljeD vrednostD="vazduh"></poljeD>
+        <poljeD vrednostD="element"/>
+    </kolonaD>
+    <Konacno vrednostK="hemija"/>
+</Asocijacija>
+
+        <!--Ovo je XML fajl sa podacima (rečima) koje se koriste u aplikaciji -->
