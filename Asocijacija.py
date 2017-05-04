@@ -977,7 +977,11 @@ def otvC1():
               dugmeC1.config(state = DISABLED)
               C1.set(podaciC[0].attributes["vrednostC"].value)
               listaOtvPolja.append('C1')
-              klik = 1def otvC2():
+
+              klik = 1
+
+def otvC2():
+
        if 'C2' in listaOtvPolja:
               random.choice(listaFunkcija)()
        else:
