@@ -873,7 +873,7 @@ kolonaDent.place(x=440, y=367)
 kolonaDent.bind("<Button-1>", brisiEntry)
 
 def pop(*args):
-    tk.messagebox.showinfo("PROČITAJ", "Prilikom upsivanja rešenja:\nPišite malim latiničnim slovima.\nKoristite slova sa kvačicama(š,đ,č,ć,ž).\nNeka rešenja se sastoje iz dve reči.")
+    tk.messagebox.showinfo("PROČITAJ", "Prilikom upsivanja rešenja Koristite slova sa kvačicama(š,đ,č,ć,ž).")
 
 up = tk.Button(root, text = "Uputsvto", command= pop,bg='#02A2F2', fg='yellow', justify="center", width = 10, font = BUTT_FONT, state = NORMAL)
 up.grid(column=1, row=11, sticky='w')
@@ -957,7 +957,8 @@ def otvB2():
               klik = 1
 def otvB3():
        if 'B3' in listaOtvPolja:
-              random.choice(listaFunkcija)()       else:
+              random.choice(listaFunkcija)()
+       else:
               dugmeB3.config(state = DISABLED)
               B3.set(podaciB[2].attributes["vrednostB"].value)
               listaOtvPolja.append('B3')
@@ -967,7 +968,8 @@ def otvB4():
               random.choice(listaFunkcija)()
        else:
               dugmeB4.config(state = DISABLED)
-              B4.set(podaciB[3].attributes["vrednostB"].value)              listaOtvPolja.append('B4')
+              B4.set(podaciB[3].attributes["vrednostB"].value)
+              listaOtvPolja.append('B4')
               klik = 1
 
 def otvC1():
