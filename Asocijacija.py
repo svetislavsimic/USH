@@ -101,11 +101,13 @@ pocni = tk.Button(popUp, text='Pocni igru', width=15, font=ENT_FONT, bg="#02A2F2
 pocni.place(x=50, y=80)
 
 root.configure(background='#002240')
-root.geometry('800x600+200+50')
+#root.geometry('800x800+200+50')
+root.minsize(1000,600)
 root.title('Igra Asocijacije')
 
-
-
+ttk.Style().configure("blue.TFrame", background="#002240")
+ram=ttk.Frame(root, style="blue.TFrame")
+ram.grid(row=0,column=0)
 
 
 info = StringVar()
@@ -160,7 +162,7 @@ D4.set('D4')
 #funkcija koja setuje labelu koja daje informacije i uputstva tokom igre.. pojavljuje se 2 sekunde i onda nestane
 def infoPanel(str):
        info.set(str)
-       root.after(2500, clear)
+       ram.after(2500, clear)
 def clear():
        info.set("")
 
@@ -777,107 +779,102 @@ def dalje():
        klik = 0
 #kolone A
 
-dugmeA1 = tk.Button(root, textvariable = A1, command = lambda: state(dugmeA1),
+dugmeA1 = tk.Button(ram, textvariable = A1, command = lambda: state(dugmeA1),
                   bg='#02A2F2', fg='white', width = 16, font = BUTT_FONT, state = NORMAL) #ovo je postavljanje buttona i entryija
-dugmeA1.grid(column=0, row=0, sticky='w')                                                  #klasicni fizicki posao :) 
+dugmeA1.grid(column=1, row=0, padx=(0,0), pady=(0,0), sticky='w')                                                  #klasicni fizicki posao :) 
+dugmeA2 = tk.Button(ram, textvariable = A2, command = lambda: state(dugmeA2),
+                  bg='#02A2F2', fg='white', width = 16, font = BUTT_FONT, state = NORMAL)
+dugmeA2.grid(column=1, row=1, padx=(40,0),pady=(0,0), sticky='w')
+dugmeA3 = tk.Button(ram, textvariable = A3, command = lambda: state(dugmeA3),
+                  bg='#02A2F2', fg='white', width = 16, font = BUTT_FONT, state = NORMAL)
+dugmeA3.grid(column=1, row=2,  padx=(80,0),pady=(0,0),sticky='w')
+dugmeA4 = tk.Button(ram, textvariable = A4, command = lambda: state(dugmeA4),
+                bg='#02A2F2', fg='white', width = 16, font = BUTT_FONT, state = NORMAL)
+dugmeA4.grid(column=1, row=3, padx= (120,0), pady=(0,0),sticky='w')
 
-dugmeA2 = tk.Button(root, textvariable = A2, command = lambda: state(dugmeA2),
-                  bg='#02A2F2', fg='white', width = 16, font = BUTT_FONT, state = NORMAL)
-dugmeA2.grid(column=0, row=2, sticky='w')
-dugmeA2.place(x=40, y=50)
-dugmeA3 = tk.Button(root, textvariable = A3, command = lambda: state(dugmeA3),
-                  bg='#02A2F2', fg='white', width = 16, font = BUTT_FONT, state = NORMAL)
-dugmeA3.grid(column=0, row=3, sticky='w')
-dugmeA3.place(x=80, y=100)
-dugmeA4 = tk.Button(root, textvariable = A4, command = lambda: state(dugmeA4),
-                  bg='#02A2F2', fg='white', width = 16, font = BUTT_FONT, state = NORMAL)
-dugmeA4.grid(column=0, row=4, sticky='w')
-dugmeA4.place(x=120, y=150)
-kolonaAent = tk.Entry(root, textvariable = kolonaA, fg='#02A2F2', justify='center', font = ENT_FONT, width=18)
-kolonaAent.grid(column=0,row=5)
-kolonaAent.place(x=120, y=195)
+kolonaAent = tk.Entry(ram, textvariable = kolonaA, fg='#02A2F2', justify='center', font = ENT_FONT, width=18)
+kolonaAent.grid(column=1,row=4, padx=(120,0),pady=(0,0),sticky='w')
 kolonaAent.bind("<Button-1>", brisiEntry)
 
 #kolone B
-dugmeB1 = tk.Button(root, textvariable = B1, command = lambda: state(dugmeB1),
+dugmeB1 = tk.Button(ram, textvariable = B1, command = lambda: state(dugmeB1),
                   bg='#02A2F2', fg='white', width = 16, font = BUTT_FONT, state = NORMAL)
-dugmeB1.grid(column=1, row=0, sticky='w')
-dugmeB1.place(x=630, y=0)
-dugmeB2 = tk.Button(root, textvariable = B2, command = lambda: state(dugmeB2),
+dugmeB1.grid(column=3, row=0, padx=(190,0), pady=(0,0),sticky='w')
+
+dugmeB2 = tk.Button(ram, textvariable = B2, command = lambda: state(dugmeB2),
                   bg='#02A2F2', fg='white', width = 16, font = BUTT_FONT, state = NORMAL)
-dugmeB2.grid(column=1, row=2, sticky='w')
-dugmeB2.place(x=590, y=50)
-dugmeB3 = tk.Button(root, textvariable = B3, command = lambda: state(dugmeB3),
+dugmeB2.grid(column=3, row=1, padx=(150,0), pady=(0,0), sticky='w')
+
+dugmeB3 = tk.Button(ram, textvariable = B3, command = lambda: state(dugmeB3),
                   bg='#02A2F2', fg='white', width = 16, font = BUTT_FONT, state = NORMAL)
-dugmeB3.grid(column=1, row=3, sticky='w')
-dugmeB3.place(x=550, y=100)
-dugmeB4 = tk.Button(root, textvariable = B4, command = lambda: state(dugmeB4),
+dugmeB3.grid(column=3, row=2, padx=(110,0), pady=(0,0), sticky='w')
+
+dugmeB4 = tk.Button(ram, textvariable = B4, command = lambda: state(dugmeB4),
                   bg='#02A2F2', fg='white', width = 16, font = BUTT_FONT, state = NORMAL)
-dugmeB4.grid(column=1, row=4, sticky='w')
-dugmeB4.place(x=510, y=150)
-kolonaBent = tk.Entry(root, textvariable = kolonaB, fg='#02A2F2', justify='center', font = ENT_FONT, width=18)
-kolonaBent.grid(column=1,row=5)
-kolonaBent.place(x=440, y=195)
+dugmeB4.grid(column=3, row=3, padx=(70,0), pady=(0,0), sticky='w')
+
+kolonaBent = tk.Entry(ram, textvariable = kolonaB, fg='#02A2F2', justify='center', font = ENT_FONT, width=18)
+kolonaBent.grid(column=3, row=4, padx=(0,0), pady=(0,0),sticky='w')
+
 kolonaBent.bind("<Button-1>", brisiEntry)
 
 #RJSENJE
-rjesenjeEnt = tk.Entry(root, textvariable=rjesenje, fg='#02A2F2', justify='center', width = 31, font = RJ_FONT)
-rjesenjeEnt.grid(column=0, row=6, columnspan=1)
-rjesenjeEnt.place(x=120, y=280)
+rjesenjeEnt = tk.Entry(ram, textvariable=rjesenje, fg='#02A2F2', justify='center', width = 35, font = RJ_FONT)
+rjesenjeEnt.grid(column=1, row=5, padx=(2,0), pady=(20,0), ipady=(2),columnspan=3)
 rjesenjeEnt.bind("<Button-1>", brisiEntry)
 
 #kolone C
 
-dugmeC1 = tk.Button(root, textvariable = C1, command = lambda: state(dugmeC1),
+dugmeC1 = tk.Button(ram, textvariable = C1, command = lambda: state(dugmeC1),
                   bg='#02A2F2', fg='white', width = 16, font = BUTT_FONT, state = NORMAL)
-dugmeC1.grid(column=0, row=7, sticky='w')
-dugmeC1.place(x=120, y=412)
-dugmeC2 = tk.Button(root, textvariable = C2, command = lambda: state(dugmeC2),
+dugmeC1.grid(column=1, row=7, padx=(120,0), pady=(0,0), sticky='w')
+
+dugmeC2 = tk.Button(ram, textvariable = C2, command = lambda: state(dugmeC2),
                   bg='#02A2F2', fg='white', width = 16, font = BUTT_FONT, state = NORMAL)
-dugmeC2.grid(column=0, row=8, sticky='w')
-dugmeC2.place(x=80, y=462)
-dugmeC3 = tk.Button(root, textvariable = C3, command = lambda: state(dugmeC3),
+dugmeC2.grid(column=1, row=8, padx=(80,0), pady=(0,0), sticky='w')
+
+dugmeC3 = tk.Button(ram, textvariable = C3, command = lambda: state(dugmeC3),
                   bg='#02A2F2', fg='white', width = 16, font = BUTT_FONT, state = NORMAL)
-dugmeC3.grid(column=0, row=9, sticky='w')
-dugmeC3.place(x=40, y=512)
-dugmeC4 = tk.Button(root, textvariable = C4, command = lambda: state(dugmeC4),
+dugmeC3.grid(column=1, row=9, padx=(40,0), pady=(0,0), sticky='w')
+
+dugmeC4 = tk.Button(ram, textvariable = C4, command = lambda: state(dugmeC4),
                   bg='#02A2F2', fg='white', width = 16, font = BUTT_FONT, state = NORMAL)
-dugmeC4.grid(column=0, row=10, sticky='w')
-dugmeC4.place(x=0, y=562)
-kolonaCent = tk.Entry(root, textvariable = kolonaC, fg='#02A2F2', justify='center', font = ENT_FONT, width=18)
-kolonaCent.grid(column=0,row=5)
-kolonaCent.place(x=120, y=367)
+dugmeC4.grid(column=1, row=10, padx=(0,0), pady=(0,0), sticky='w')
+
+kolonaCent = tk.Entry(ram, textvariable = kolonaC, fg='#02A2F2', justify='center', font = ENT_FONT, width=18)
+kolonaCent.grid(column=1,row=6, padx=(120,0), pady=(0,0),sticky='w')
+
 kolonaCent.bind("<Button-1>", brisiEntry)
+
 
 #kolone D
 
-dugmeD1 = tk.Button(root, textvariable = D1, command = lambda: state(dugmeD1),
+dugmeD1 = tk.Button(ram, textvariable = D1, command = lambda: state(dugmeD1),
                   bg='#02A2F2', fg='white', width = 16, font = BUTT_FONT, state = NORMAL)
-dugmeD1.grid(column=1, row=7, sticky='w')
-dugmeD1.place(x=510, y=412)
-dugmeD2 = tk.Button(root, textvariable = D2, command = lambda: state(dugmeD2),
+dugmeD1.grid(column=3, row=7,  padx=(70,0), sticky='w')
+
+dugmeD2 = tk.Button(ram, textvariable = D2, command = lambda: state(dugmeD2),
                   bg='#02A2F2', fg='white', width = 16, font = BUTT_FONT, state = NORMAL)
-dugmeD2.grid(column=1, row=8, sticky='w')
-dugmeD2.place(x=550, y=462)
-dugmeD3 = tk.Button(root, textvariable = D3, command = lambda: state(dugmeD3),
+dugmeD2.grid(column=3, row=8, padx=(120,0),sticky='w')
+
+dugmeD3 = tk.Button(ram, textvariable = D3, command = lambda: state(dugmeD3),
                   bg='#02A2F2', fg='white', width = 16, font = BUTT_FONT, state = NORMAL)
-dugmeD3.grid(column=1, row=9, sticky='w')
-dugmeD3.place(x=590, y=512)
-dugmeD4 = tk.Button(root, textvariable = D4, command = lambda: state(dugmeD4),
+dugmeD3.grid(column=3, row=9, padx=(150,0),sticky='w')
+
+dugmeD4 = tk.Button(ram, textvariable = D4, command = lambda: state(dugmeD4),
                   bg='#02A2F2', fg='white', width = 16, font = BUTT_FONT, state = NORMAL)
-dugmeD4.grid(column=1, row=10, sticky='w')
-dugmeD4.place(x=630, y=562)
-kolonaDent = tk.Entry(root, textvariable = kolonaD, fg='#02A2F2', justify='center', font = ENT_FONT, width=18)
-kolonaDent.grid(column=1,row=5)
-kolonaDent.place(x=440, y=367)
+dugmeD4.grid(column=3, row=10, padx=(190,0),sticky='w')
+
+kolonaDent = tk.Entry(ram, textvariable = kolonaD, fg='#02A2F2', justify='center', font = ENT_FONT, width=18)
+kolonaDent.grid(column=3,row=6,padx=(0,0),sticky='w')
+
 kolonaDent.bind("<Button-1>", brisiEntry)
 
 def pop(*args):
     tk.messagebox.showinfo("PROČITAJ", "Prilikom upsivanja rešenja Koristite slova sa kvačicama(š,đ,č,ć,ž).")
 
-up = tk.Button(root, text = "Uputsvto", command= pop,bg='#02A2F2', fg='yellow', justify="center", width = 10, font = BUTT_FONT, state = NORMAL)
-up.grid(column=1, row=11, sticky='w')
-up.place(x=345, y=450)
+up = tk.Button(ram, text = "Uputsvto", command= pop,bg='#02A2F2', fg='yellow', justify="center", width = 10, font = BUTT_FONT, state = NORMAL)
+up.grid(column=2, row=8, sticky='w')
 
 
 
@@ -885,24 +882,24 @@ up.place(x=345, y=450)
 sijalica = PhotoImage(file='sijalica.png')
 sijalica = sijalica.subsample(10)
 #dugme
-potvrdi = tk.Button(root, text="Potvrdi", font = BUTT_FONT, bg='#02A2F2', fg='yellow', width=8, command = odgovor)
-potvrdi.grid(column=1, row=5)
-potvrdi.place(x=700, y=283)
-plavi = tk.Button(root, image = sijalica, bg='blue')
+potvrdi = tk.Button(ram, text="Potvrdi", font = BUTT_FONT, bg='#02A2F2', fg='yellow', width=8, command = odgovor)
+potvrdi.grid(column=4, row=5, padx=(0,30))
+kontis= ttk.Frame(ram, style="blue.TFrame" )
+kontis.grid(row=0, column=1, columnspan=3, padx=(190,190), sticky=(N,S,E,W))
+plavi = tk.Button(kontis, image = sijalica, bg='blue')
 plavi.grid(column=2, row=0)
-plavi.place(x=250)
-crveni = tk.Button(root, image = sijalica, bg='red')
-crveni.grid(column=1, row=0)
-crveni.place(x=470)
-dalje = tk.Button(root, text="Dalje", font=BUTT_FONT, bg='#02A2F2', fg='yellow', width=8, command = dalje)
-dalje.place(x=17, y=283)
+crveni = tk.Button(kontis, image = sijalica, bg='red')
+crveni.grid(column=0, row=0)
+dalje = tk.Button(ram, text="Dalje",  font=BUTT_FONT, bg='#02A2F2', fg='yellow', width=8, command = dalje)
+dalje.grid(column=0, padx=(30,0),row=5)
+
 # brojac
-brojac = tk.Label(root, width=5, font=RJ_FONT, relief=SUNKEN)
-brojac.place(x=350)
+brojac = tk.Label(kontis, width=2,font=RJ_FONT, relief=SUNKEN)
+brojac.grid(column=1, row=0, sticky=(N,S,E,W))
 #infoLabel
-infolabel=tk.Label(root,textvariable = info, font=IN_FONT, fg='yellow', bg='#002240')
-infolabel.grid(column=0, row=8,columnspan=1, sticky=(N, S, E, W))
-infolabel.place(x=300, y=565)
+infolabel=tk.Label(ram,textvariable = info, fg='yellow', bg='#002240')
+infolabel.grid(column=1, columnspan=3, row=11,sticky=(N, S, E, W))
+
 ####################Pojedinacne funkcije za otvaranje random polja####################
 def otvA1():
        if 'A1' in listaOtvPolja:
@@ -1044,6 +1041,23 @@ global listaFunkcija
 listaFunkcija = [otvA1, otvA2, otvA3, otvA4, otvB1, otvB2, otvB3, otvB4, otvC1, otvC2, otvC3, otvC4, otvD1, otvD2, otvD3, otvD4]
 
 
+root.columnconfigure(0,weight=1)
+root.rowconfigure(0,weight=1)
+
+for i in range(5):
+	ram.columnconfigure(i,weight=1)
+for i in range(12):
+	ram.rowconfigure(i,weight=1)
+
+kontis.columnconfigure(0, weight=1)
+kontis.columnconfigure(1, weight=1)
+kontis.columnconfigure(2, weight=1)
+kontis.rowconfigure(0, weight=1)
+
+for a in ram.winfo_children(): a.grid_configure(pady=5)
+rjesenjeEnt.grid_configure(pady=15)
+
+for a in kontis.winfo_children():a.grid_configure(pady=2)
 root.bind("<Return>", odgovor)
 
 
