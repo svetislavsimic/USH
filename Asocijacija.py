@@ -101,7 +101,8 @@ pocni = tk.Button(popUp, text='Pocni igru', width=15, font=ENT_FONT, bg="#02A2F2
 pocni.place(x=50, y=80)
 
 root.configure(background='#002240')
-root.geometry('800x600+200+50')
+#root.geometry('800x800+200+50')
+root.minsize(1000,600)
 root.title('Igra Asocijacije')
 
 ttk.Style().configure("blue.TFrame", background="#002240")
@@ -854,7 +855,7 @@ dugmeD1.grid(column=3, row=7,  padx=(70,0), sticky='w')
 
 dugmeD2 = tk.Button(ram, textvariable = D2, command = lambda: state(dugmeD2),
                   bg='#02A2F2', fg='white', width = 16, font = BUTT_FONT, state = NORMAL)
-dugmeD2.grid(column=3, row=8, padx=(130,0),sticky='w')
+dugmeD2.grid(column=3, row=8, padx=(120,0),sticky='w')
 
 dugmeD3 = tk.Button(ram, textvariable = D3, command = lambda: state(dugmeD3),
                   bg='#02A2F2', fg='white', width = 16, font = BUTT_FONT, state = NORMAL)
@@ -873,7 +874,7 @@ def pop(*args):
     tk.messagebox.showinfo("PROČITAJ", "Prilikom upsivanja rešenja Koristite slova sa kvačicama(š,đ,č,ć,ž).")
 
 up = tk.Button(ram, text = "Uputsvto", command= pop,bg='#02A2F2', fg='yellow', justify="center", width = 10, font = BUTT_FONT, state = NORMAL)
-up.grid(column=2, row=10, sticky='w')
+up.grid(column=2, row=8, sticky='w')
 
 
 
@@ -882,15 +883,15 @@ sijalica = PhotoImage(file='sijalica.png')
 sijalica = sijalica.subsample(10)
 #dugme
 potvrdi = tk.Button(ram, text="Potvrdi", font = BUTT_FONT, bg='#02A2F2', fg='yellow', width=8, command = odgovor)
-potvrdi.grid(column=4, row=5, padx=(0,0))
+potvrdi.grid(column=4, row=5, padx=(0,30))
 kontis= ttk.Frame(ram, style="blue.TFrame" )
 kontis.grid(row=0, column=1, columnspan=3, padx=(190,190), sticky=(N,S,E,W))
 plavi = tk.Button(kontis, image = sijalica, bg='blue')
 plavi.grid(column=2, row=0)
 crveni = tk.Button(kontis, image = sijalica, bg='red')
 crveni.grid(column=0, row=0)
-dalje = tk.Button(ram, text="Dalje", font=BUTT_FONT, bg='#02A2F2', fg='yellow', width=8, command = dalje)
-dalje.grid(column=0, row=5)
+dalje = tk.Button(ram, text="Dalje",  font=BUTT_FONT, bg='#02A2F2', fg='yellow', width=8, command = dalje)
+dalje.grid(column=0, padx=(30,0),row=5)
 
 # brojac
 brojac = tk.Label(kontis, width=2,font=RJ_FONT, relief=SUNKEN)
