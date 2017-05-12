@@ -33,7 +33,8 @@ TOP_FONT = ('Consolas', 13)
 BUTT_FONT = ('Consolas', 14, 'bold')
 ENT_FONT = ('Consolas', 17, 'bold')
 RJ_FONT = ('Consolas', 25, 'bold')
-IN_FONT = ('Consolas', 20)
+IN_FONT = ('Consolas', 22)
+
 klik = 0   # klik sluzi za sprjecavanje otvaranja vise polja odjednom i unosenja odgovora prije nego se otvori polje
 c = None
 def vrijeme(count): # tajmer koji prebacuje zutu boju sa igraca na igraca
@@ -885,7 +886,7 @@ sijalica = sijalica.subsample(10)
 potvrdi = tk.Button(ram, text="Potvrdi", font = BUTT_FONT, bg='#02A2F2', fg='yellow', width=8, command = odgovor)
 potvrdi.grid(column=4, row=5, padx=(0,30))
 kontis= ttk.Frame(ram, style="blue.TFrame" )
-kontis.grid(row=0, column=1, columnspan=3, padx=(190,190), sticky=(N,S,E,W))
+kontis.grid(row=0, column=1, columnspan=3, rowspan=2, padx=(190,190), pady=(0,0), sticky=(N,S,E,W))
 plavi = tk.Button(kontis, image = sijalica, bg='blue')
 plavi.grid(column=2, row=0)
 crveni = tk.Button(kontis, image = sijalica, bg='red')
@@ -894,10 +895,10 @@ dalje = tk.Button(ram, text="Dalje",  font=BUTT_FONT, bg='#02A2F2', fg='yellow',
 dalje.grid(column=0, padx=(30,0),row=5)
 
 # brojac
-brojac = tk.Label(kontis, width=2,font=RJ_FONT, relief=SUNKEN)
+brojac = tk.Label(kontis,font=RJ_FONT, relief=SUNKEN)
 brojac.grid(column=1, row=0, sticky=(N,S,E,W))
 #infoLabel
-infolabel=tk.Label(ram,textvariable = info, fg='yellow', bg='#002240')
+infolabel=tk.Label(ram,textvariable = info, font=IN_FONT, fg='yellow', bg='#002240')
 infolabel.grid(column=1, columnspan=3, row=11,sticky=(N, S, E, W))
 
 ####################Pojedinacne funkcije za otvaranje random polja####################
@@ -1057,7 +1058,7 @@ kontis.rowconfigure(0, weight=1)
 for a in ram.winfo_children(): a.grid_configure(pady=5)
 rjesenjeEnt.grid_configure(pady=15)
 
-for a in kontis.winfo_children():a.grid_configure(pady=2)
+
 root.bind("<Return>", odgovor)
 
 
